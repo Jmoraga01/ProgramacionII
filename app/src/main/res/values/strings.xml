@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">controlesBasicos</string>
     <string-array name="spnLongitud">
         <item>Metros</item>
         <item>Cm</item>
@@ -38,10 +39,11 @@
         <item>Terabyte</item>
     </string-array>
 
+
     <string-array name="spnTransmision">
-    <item>bit por segundo</item>
-    <item>kilobit por segundo</item>
-    <item>megabit por segundo</item>
+        <item>bit por segundo</item>
+        <item>kilobit por segundo</item>
+        <item>megabit por segundo</item>
         <item>Kilobyte por segundo</item>
         <item>Kibibit por segundo</item>
         <item>Megabit por segundo</item>
@@ -53,6 +55,36 @@
         <item>Terabit por segundo</item>
         <item>Terabyte por segundo</item>
         <item>Tebibit por segundo</item>
+    </string-array>
+
+    <string-array name="spnMonedas">
+        <item>dolar americano</item>
+        <item>peso mexicano</item>
+        <item>lempira hondureño</item>
+        <item>quetzal</item>
+        <item>cordoba</item>
+        <item>colon costarricense</item>
+        <item>balboa</item>
+        <item>dolar beliceño</item>
+        <item>dolar canadiense</item>
+        <item>euro</item>
+        <item>yen japones</item>
+        <item>bolivar venezolano</item>
+        <item>peso colombiano</item>
+        <item>dolar australiano</item>
+    </string-array>
+
+    <string-array name="spnTiempo">
+        <item>milisegundos</item>
+        <item>segundos</item>
+        <item>minutos</item>
+        <item>horas</item>
+        <item>dias</item>
+        <item>semanas</item>
+        <item>meses</item>
+        <item>años</item>
+        <item>decadas</item>
+        <item>siglos</item>
     </string-array>
 
 </resources>

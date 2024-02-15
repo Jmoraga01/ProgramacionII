@@ -305,6 +305,123 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/tabMonedas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblDEMonedas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="60dp"
+                    android:text="DE:" />
+
+                <TextView
+                    android:id="@+id/lblAMonedas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblDEMonedas"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="A:" />
+
+                <Spinner
+                    android:id="@+id/spnDEMonedas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/lblDEMonedas"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/lblDEMonedas"
+                    android:entries="@array/spnMonedas" />
+
+                <Spinner
+                    android:id="@+id/spnAMonedas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/lblAMonedas"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/lblAMonedas"
+                    android:entries="@array/spnMonedas" />
+
+                <EditText
+                    android:id="@+id/txtCantidadDeMonedas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spnAMonedas"
+                    android:layout_marginTop="40dp"
+                    android:hint="Cantidad a convertir" />
+
+                <Button
+                    android:id="@+id/btnConvertirMonedas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtCantidadDeMonedas"
+                    android:layout_marginTop="40dp"
+                    android:text="convertir" />
+
+            </RelativeLayout>
+
+            <!-- Tab: Tiempo -->
+            <RelativeLayout
+                android:id="@+id/tabTiempo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblDETiempo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="60dp"
+                    android:text="DE:" />
+
+                <TextView
+                    android:id="@+id/lblATiempo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblDETiempo"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="A:" />
+
+                <Spinner
+                    android:id="@+id/spnDETiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/lblDETiempo"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/lblDETiempo"
+                    android:entries="@array/spnTiempo" />
+
+                <Spinner
+                    android:id="@+id/spnATiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/lblATiempo"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/lblATiempo"
+                    android:entries="@array/spnTiempo" />
+
+                <EditText
+                    android:id="@+id/txtCantidadDeTiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spnATiempo"
+                    android:layout_marginTop="40dp"
+                    android:hint="Cantidad a convertir" />
+
+                <Button
+                    android:id="@+id/btnConvertirTiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtCantidadDeTiempo"
+                    android:layout_marginTop="40dp"
+                    android:text="convertir" />
+
+            </RelativeLayout>
+
         </FrameLayout>
     </LinearLayout>
 </TabHost>
