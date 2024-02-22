@@ -1,68 +1,71 @@
 package com.ugb.controlesbasicos;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 public class MainActivity extends AppCompatActivity {
     TextView tempVal;
-    Button btn;
-    RadioGroup opt;
-    Spinner spn;
+    SensorManager sensorManager;
+    Sensor sensor;
+    SensorEventListener sensorEventListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        btn = findViewById(R.id.btnCalcular);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tempVal = findViewById(R.id.txtnum1);
-                double num1 = Double.parseDouble(tempVal.getText().toString());
-
-                tempVal = findViewById(R.id.txtnum2);
-                double num2 = Double.parseDouble(tempVal.getText().toString());
-
-                double respuesta = 0;
-                opt = findViewById(R.id.optOpciones);
-                switch (opt.getCheckedRadioButtonId()){
-                    case R.id.optSuma:
-                        respuesta = num1+num2;
-                        break;
-                    case R.id.optResta:
-                        respuesta=num1-num2;
-                        break;
-                    case R.id.optMultiplicacion:
-                        respuesta=num1*num2;
-                        break;
-                    case R.id.optDivision:
-                        respuesta=num1/num2;
-                        break;
-                }
-                spn = findViewById(R.id.spnOpciones);
-                switch (spn.getSelectedItemPosition()){
-                    case 0:
-                        respuesta = num1 + num2;
-                        break;
-                        case 1:
-                        respuesta = num1 - num2;
-                        break;
-                    case 2:
-                        respuesta = num1 * num2;
-                        break;
-                        case 3:
-                        respuesta = num1 / num2;
-                        break;
-                }
-                tempVal = findViewById(R.id.lblrespuesta);
-                tempVal.setText("Respuesta: "+ respuesta);
-            }
-        });
+        tempVal = findViewById(R.id.lblSensorLuz);
+        activarSensorLuz();
     }
-}
+    @Override
+    protected void onResume() {
+        iniciar();
+        super.onResume();
+    }
+    @Override
+    protected void onPause() {
+        detener();
+        super.onPause();
+    }
+        private void activarSensorLuz(){
+            sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+            sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+            if(sensor==null){
+                tempVal.setText("Tu dispositivo NO tiene el sensor de luz");
+                finish();
+            }
+            sensorEventListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent sensorEvent) {
+                    double valor = sensorEvent.values[0];
+                    tempVal.setText("Luz: "+ valor);
+
+                    if(valor<=20){
+                        getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+                    } else if (valor<=50) {
+                        getWindow().getDecorView().setBackgroundColor(Color.RED);
+                    } else {
+                        getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
+                    }
+                }
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int i) {
+                }
+            };
+        }
+        private void iniciar(){
+            sensorManager.registerListener(sensorEventListener, sensor, 2000*1000);
+        }
+        private void detener(){
+            sensorManager.unregisterListener(sensorEventListener);
+        }
+    }
