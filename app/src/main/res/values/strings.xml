@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">aguaCoversor</string>
+    <string-array name="aguaOpciones">
+        <item></item>
+    </string-array>
+</resources>
