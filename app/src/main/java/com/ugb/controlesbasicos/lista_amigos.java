@@ -58,7 +58,7 @@ public class lista_amigos extends AppCompatActivity {
         });
         try {
             di = new detectarInternet(getApplicationContext());
-            if (di.hayConexionInternet()) {
+            if (di.hayConexionInternet()) { sincronizar();
                 obtenerDatosProductosServidor();
             } else {//offline
                 obtenerDatosProducto();
@@ -133,7 +133,6 @@ public class lista_amigos extends AppCompatActivity {
             if (item.getItemId() == R.id.mnxAgregar) {
                 parametros.putString("accion", "nuevo");
                 abrirActividad(parametros);
-
             } else if (item.getItemId()== R.id.mnxModificar) {
                 parametros.putString("accion", "modificar");
                 parametros.putString("productos", datosJSON.getJSONObject(posicion).toString());
