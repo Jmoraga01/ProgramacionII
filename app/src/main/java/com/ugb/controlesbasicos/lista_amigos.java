@@ -75,12 +75,12 @@ public class lista_amigos extends AppCompatActivity {
             String data = datosServidor.execute().get();
             jsonObject = new JSONObject(data);
             datosJSON = jsonObject.getJSONArray("rows");
-            mostrarDatosAmigos();
+            mostrarDatosProductos();
         }catch (Exception e){
             mostrarMsg("Error al obtener datos del server: "+e.getMessage());
         }
     }
-    private void mostrarDatosAmigos() {
+    private void mostrarDatosProductos() {
         try {
             if (datosJSON.length() > 0) {
                 lts = findViewById(R.id.ltsProductos);
@@ -130,19 +130,18 @@ public class lista_amigos extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         try{
-            switch (item.getItemId()){
-                case R.id.mnxAgregar:
-                    parametros.putString("accion","nuevo");
-                    abrirActividad(parametros);
-                    break;
-                case R.id.mnxModificar:
-                    parametros.putString("accion", "modificar");
-                    parametros.putString("amigos", datosJSON.getJSONObject(posicion).toString());
-                    abrirActividad(parametros);
-                    break;
-                case R.id.mnxEliminar:
-                    eliminarProductos();
-                    break;
+            if (item.getItemId() == R.id.mnxAgregar) {
+                parametros.putString("accion", "nuevo");
+                abrirActividad(parametros);
+
+            } else if (item.getItemId()== R.id.mnxModificar) {
+                parametros.putString("accion", "modificar");
+                parametros.putString("amigos", datosJSON.getJSONObject(posicion).toString());
+                abrirActividad(parametros);
+
+            } else if (item.getItemId() == R.id.mnxEliminar) {
+                eliminarProductos();
+
             }
             return true;
         }catch (Exception e){
@@ -218,7 +217,7 @@ public class lista_amigos extends AppCompatActivity {
                     alProductos.add(misClientes);//eliminar despues
 
                 }while(cProductos.moveToNext());
-                mostrarDatosAmigos();
+                mostrarDatosProductos();
                 alProductosCopy.addAll(alProductos);//eliminar despues
 
                 adaptadorImagenes adImagenes = new adaptadorImagenes(lista_amigos.this, alProductos);
