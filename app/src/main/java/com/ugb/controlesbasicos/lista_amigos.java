@@ -77,7 +77,7 @@ public class lista_amigos extends AppCompatActivity {
             datosJSON = jsonObject.getJSONArray("rows");
             mostrarDatosProductos();
         }catch (Exception e){
-            mostrarMsg("Error al obtener datos del server: "+e.getMessage());
+            mostrarMsg("jaja : "+e.getMessage());
         }
     }
     private void mostrarDatosProductos() {
@@ -92,7 +92,7 @@ public class lista_amigos extends AppCompatActivity {
                     misClientes = new amigos(
                             misDatosJSONObject.getString("_id"),
                             misDatosJSONObject.getString("_rev"),
-                            misDatosJSONObject.getString("idproducto"),
+                            misDatosJSONObject.getString("idProducto"),
                             misDatosJSONObject.getString("codigo"),
                             misDatosJSONObject.getString("descripcion"),
                             misDatosJSONObject.getString("marca"),
