@@ -36,7 +36,7 @@ public class DB extends SQLiteOpenHelper {
                         "','" + datos[3] + "','" + datos[4] + "','" + datos[5] + "','" + datos[6] + "', '" + datos[7] + "', '" + datos[8] + "')";
             } else if (accion.equals("modificar")) {
                 sql = "UPDATE productos SET id='" + datos[0] + "', rev='" + datos[1] + "', codigo='" + datos[3] + "',descripcion='" + datos[4] + "',marca='" +
-                        datos[5] + "',presentacion='" + datos[6] + "',precio='" + datos[7] + "', foto='" + datos[8] + "' WHERE idAmigo='" + datos[2] + "'";
+                        datos[5] + "',presentacion='" + datos[6] + "',precio='" + datos[7] + "', foto='" + datos[8] + "' WHERE idProducto='" + datos[2] + "'";
             } else if (accion.equals("eliminar")) {
                 sql = "DELETE FROM productos WHERE idProducto='" + datos[2] + "'";
             }
