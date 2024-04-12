@@ -32,7 +32,7 @@ public class adaptadorImagenes extends BaseAdapter {
     }
     @Override
     public long getItemId(int i) {
-        return Long.parseLong(datosProductosArrayList.get(i).getIdProducto());
+        return i;
     }
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {

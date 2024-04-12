@@ -122,7 +122,7 @@ public class lista_amigos extends AppCompatActivity {
         try {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
             posicion = info.position;
-            menu.setHeaderTitle(datosJSON.getJSONObject(posicion).getJSONObject("value").getString("nombre"));
+            menu.setHeaderTitle(datosJSON.getJSONObject(posicion).getJSONObject("value").getString("codigo"));
         }catch (Exception e){
             mostrarMsg("Error al mostrar el menu: "+ e.getMessage());
         }
@@ -136,7 +136,7 @@ public class lista_amigos extends AppCompatActivity {
 
             } else if (item.getItemId()== R.id.mnxModificar) {
                 parametros.putString("accion", "modificar");
-                parametros.putString("amigos", datosJSON.getJSONObject(posicion).toString());
+                parametros.putString("productos", datosJSON.getJSONObject(posicion).toString());
                 abrirActividad(parametros);
 
             } else if (item.getItemId() == R.id.mnxEliminar) {
@@ -153,13 +153,13 @@ public class lista_amigos extends AppCompatActivity {
         try{
             AlertDialog.Builder confirmar = new AlertDialog.Builder(lista_amigos.this);
             confirmar.setTitle("Estas seguro de eliminar a: ");
-            confirmar.setMessage(datosJSON.getJSONObject(posicion).getJSONObject("value").getString("nombre")); //1 es el nombre
+            confirmar.setMessage(datosJSON.getJSONObject(posicion).getJSONObject("value").getString("codigo")); //1 es el nombre
             confirmar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     try {
                         String respuesta = db.administrar_amigos("eliminar",
-                                new String[]{"", "", datosJSON.getJSONObject(posicion).getJSONObject("value").getString("idAmigo")});
+                                new String[]{"", "", datosJSON.getJSONObject(posicion).getJSONObject("value").getString("idProducto")});
                         if (respuesta.equals("ok")) {
                             mostrarMsg("Producto eliminado con exito");
                             obtenerDatosProducto();
@@ -202,7 +202,7 @@ public class lista_amigos extends AppCompatActivity {
                     JSONObject jsonObjectValue = new JSONObject();
                     jsonObject.put("_id", cProductos.getString(0));
                     jsonObject.put("_rev", cProductos.getString(1));
-                    jsonObject.put("idproducto", cProductos.getString(2));
+                    jsonObject.put("idProducto", cProductos.getString(2));
                     jsonObject.put("codigo", cProductos.getString(3));
                     jsonObject.put("descripcion", cProductos.getString(4));
                     jsonObject.put("marca", cProductos.getString(5));

@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     String[] datos = new String[]{id, rev, idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto};
                     respuesta = db.administrar_amigos(accion, datos);
                     if (respuesta.equals("ok")) {
-                        mostrarMsg("Amigos registrado con exito.");
+                        mostrarMsg("producto registrado con exito.");
                         listarAmigos();
                     } else {
                         mostrarMsg("Error al intentar registrar el producto: " + respuesta);
