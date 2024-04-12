@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,14 +31,22 @@ public class MainActivity extends AppCompatActivity {
     TextView tempVal;
     Button btn;
     FloatingActionButton btnRegresar;
-    String id="", accion="nuevo";
+    String id="", rev="", idProducto="", accion="nuevo";
     ImageView img;
     String urlCompletaFoto;
     Intent tomarFotoIntent;
+    utilidades utls;
+    DB db;
+
+    detectarInternet di;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        utls = new utilidades();
+        db = new DB(getApplicationContext(), "", null, 1);
+        di = new detectarInternet(getApplicationContext());
 
         btnRegresar = findViewById(R.id.fabListaProductos);
         btnRegresar.setOnClickListener(new View.OnClickListener() {
@@ -50,29 +60,59 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tempVal = findViewById(R.id.txtcodigo);
-                String codigo = tempVal.getText().toString();
+                try {
+                    tempVal = findViewById(R.id.txtcodigo);
+                    String codigo = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtdescripcion);
-                String descripcion = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtdescripcion);
+                    String descripcion = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtMarca);
-                String marca = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtMarca);
+                    String marca = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtPresentacion);
-                String presentacion = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtPresentacion);
+                    String presentacion = tempVal.getText().toString();
 
-                tempVal = findViewById(R.id.txtPrecio);
-                String precio = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtPrecio);
+                    String precio = tempVal.getText().toString();
 
-                String[] datos = new String[]{id,codigo,descripcion,marca,presentacion,precio, urlCompletaFoto};
-                DB db = new DB(getApplicationContext(),"", null, 1);
-                String respuesta = db.administrar_amigos(accion, datos);
-                if( respuesta.equals("ok") ){
-                    mostrarMsg("El producto ha sido registrado con exito.");
-                    listarAmigos();
-                }else {
-                    mostrarMsg("Error al intentar registrar el producto: "+ respuesta);
+                    String respuesta = "";
+                    if( di.hayConexionInternet() ) {
+                        //obtener datos a enviar al servidor
+                        JSONObject datosProductos = new JSONObject();
+                        if (accion.equals("modificar")) {
+                            datosProductos.put("_id", id);
+                            datosProductos.put("_rev", rev);
+                        }
+                        datosProductos.put("idProducto", idProducto);
+                        datosProductos.put("codigo", codigo);
+                        datosProductos.put("descripcion", descripcion);
+                        datosProductos.put("marca", marca);
+                        datosProductos.put("presentacion", presentacion);
+                        datosProductos.put("precio", precio);
+                        datosProductos.put("urlCompletaFoto", urlCompletaFoto);
+                        //enviamos los datos
+                        enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
+                        respuesta = objGuardarDatosServidor.execute(datosProductos.toString()).get();
+                        //comprobacion de la respuesta
+                        JSONObject respuestaJSONObject = new JSONObject(respuesta);
+                        if (respuestaJSONObject.getBoolean("ok")) {
+                            id = respuestaJSONObject.getString("id");
+                            rev = respuestaJSONObject.getString("rev");
+                        } else {
+                            respuesta = "Error al guardar en servidor: " + respuesta;
+                        }
+                    }
+                    String[] datos = new String[]{id, rev, idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto};
+                    respuesta = db.administrar_amigos(accion, datos);
+                    if (respuesta.equals("ok")) {
+                        mostrarMsg("Amigos registrado con exito.");
+                        listarAmigos();
+                    } else {
+                        mostrarMsg("Error al intentar registrar el producto: " + respuesta);
+                    }
+                }catch (Exception e){
+                    mostrarMsg("Error al guadar datos en el servidor o en SQLite: "+ e.getMessage());
                 }
             }
         });
@@ -87,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void tomarFotoProducto(){
         tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File fotoProducto = null;
+        File fotoAmigo = null;
         try{
-            fotoProducto = crearImagenproducto();
-            if( fotoProducto!=null ){
-                Uri urifotoProducto = FileProvider.getUriForFile(MainActivity.this,
-                        "com.ugb.controlesbasicos.fileprovider", fotoProducto);
-                tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, urifotoProducto);
+            fotoAmigo = crearImagenamigo();
+            if( fotoAmigo!=null ){
+                Uri urifotoAmigo = FileProvider.getUriForFile(MainActivity.this,
+                        "com.ugb.controlesbasicos.fileprovider", fotoAmigo);
+                tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, urifotoAmigo);
                 startActivityForResult(tomarFotoIntent, 1);
             }else{
                 mostrarMsg("No se pudo tomar la foto");
@@ -116,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             mostrarMsg("Error al seleccionar la foto"+ e.getMessage());
         }
     }
-    private File crearImagenproducto() throws Exception{
+    private File crearImagenamigo() throws Exception{
         String fechaHoraMs = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()),
                 fileName = "imagen_"+fechaHoraMs+"_";
         File dirAlmacenamiento = getExternalFilesDir(Environment.DIRECTORY_DCIM);
@@ -133,30 +173,34 @@ public class MainActivity extends AppCompatActivity {
             accion = parametros.getString("accion");
 
             if(accion.equals("modificar")){
-                String[] productos = parametros.getStringArray("amigos");
-                id = productos[0];
+                JSONObject jsonObject = new JSONObject(parametros.getString("productos")).getJSONObject("value");
+                id = jsonObject.getString("_id");
+                rev = jsonObject.getString("_rev");
+                idProducto = jsonObject.getString("idProducto");
 
                 tempVal = findViewById(R.id.txtcodigo);
-                tempVal.setText(productos[1]);
+                tempVal.setText(jsonObject.getString("codigo"));
 
                 tempVal = findViewById(R.id.txtdescripcion);
-                tempVal.setText(productos[2]);
+                tempVal.setText(jsonObject.getString("descripcion"));
 
                 tempVal = findViewById(R.id.txtMarca);
-                tempVal.setText(productos[3]);
+                tempVal.setText(jsonObject.getString("marca"));
 
                 tempVal = findViewById(R.id.txtPresentacion);
-                tempVal.setText(productos[4]);
+                tempVal.setText(jsonObject.getString("presentacion"));
 
                 tempVal = findViewById(R.id.txtPrecio);
-                tempVal.setText(productos[5]);
+                tempVal.setText(jsonObject.getString("precio"));
 
-                urlCompletaFoto = productos[6];
+                urlCompletaFoto = jsonObject.getString("urlCompletaFoto");
                 Bitmap imagenBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
                 img.setImageBitmap(imagenBitmap);
+            }else{//nuevos registros
+                idProducto = utls.generarIdUnico();
             }
         }catch (Exception e){
-            mostrarMsg("Error al mostrar los datos de los productos");
+            mostrarMsg("Error al mostrar los datos productos");
         }
     }
     private void mostrarMsg(String msg){
@@ -165,6 +209,5 @@ public class MainActivity extends AppCompatActivity {
     private void listarAmigos(){
         Intent intent = new Intent(getApplicationContext(), lista_amigos.class);
         startActivity(intent);
-
     }
 }
