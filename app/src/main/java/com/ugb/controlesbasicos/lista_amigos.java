@@ -68,8 +68,10 @@ public class lista_amigos extends AppCompatActivity {
         }
         buscarProductos();
     }
+    private void sincronizar(){
 
-    private void obtenerDatosProductosServidor(){
+    }
+    private void obtenerDatosProductosServidor(){//offline
         try {
             datosServidor = new obtenerDatosServidor();
             String data = datosServidor.execute().get();
