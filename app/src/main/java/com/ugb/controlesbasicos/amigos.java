@@ -11,6 +11,7 @@ public class amigos {
     String precio;
     String foto;
 
+
     public amigos(String _id, String _rev, String idProducto, String codigo, String descripcion, String marca, String presentacion, String precio, String foto) {
         this._id = _id;
         this._rev = _rev;

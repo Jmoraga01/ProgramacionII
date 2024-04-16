@@ -52,4 +52,5 @@ public class DB extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM productos ORDER BY codigo", null);
         return cursor;
     }
+
 }

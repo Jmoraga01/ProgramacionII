@@ -210,4 +210,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), lista_amigos.class);
         startActivity(intent);
     }
+
 }
