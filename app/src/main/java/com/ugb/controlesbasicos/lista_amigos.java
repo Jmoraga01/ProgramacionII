@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -71,18 +72,24 @@ public class lista_amigos extends AppCompatActivity {
     private void sincronizar() {
         try {
             di = new detectarInternet(getApplicationContext());
-            if (di.hayConexionInternet()) {
-                if (datosJSON.length() > 0) {
-                    // Llama a obtenerDatosProductosServidor() una vez para sincronizar todos los datos
-                    obtenerDatosProductosServidor();
-                }
-            } else {
+
+            // Verifica si no hay conexión a Internet
+            if (!di.noHayInternet()) {
+                // Si no hay conexión, obtén los datos localmente y detén la sincronización
                 obtenerDatosProducto();
+                return;
+            }
+
+            // Si hay conexión a Internet, intenta sincronizar con el servidor
+            if (di.hayConexionInternet()) {
+                obtenerDatosProductosServidor();
             }
         } catch (Exception e) {
-            mostrarMsg("hay perdon un error al cargar lista Producto: " + e.getMessage());
+            mostrarMsg("Error al cargar lista Producto: " + e.getMessage());
         }
     }
+
+
 
     private void obtenerDatosProductosServidor(){//offline
         try {

@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     String precio = tempVal.getText().toString();
 
                     String respuesta = "";
-                    if( di.hayConexionInternet() ) {
+                    if (di.hayConexionInternet()) {
                         //obtener datos a enviar al servidor
                         JSONObject datosProductos = new JSONObject();
                         if (accion.equals("modificar")) {
@@ -102,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             respuesta = "Error al guardar en servidor: " + respuesta;
                         }
+                    } else if (di.noHayInternet()) {
+
                     }
                     String[] datos = new String[]{id, rev, idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto};
                     respuesta = db.administrar_amigos(accion, datos);
@@ -111,13 +113,14 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         mostrarMsg("Error al intentar registrar el producto: " + respuesta);
                     }
-                }catch (Exception e){
+                } catch (Exception e){
                     mostrarMsg("Error al guadar datos en el servidor o en SQLite: "+ e.getMessage());
                 }
             }
         });
         img = findViewById(R.id.btnImgProducto);
         img.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 tomarFotoProducto();
