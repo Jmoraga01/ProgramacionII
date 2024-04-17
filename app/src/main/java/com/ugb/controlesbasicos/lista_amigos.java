@@ -68,9 +68,22 @@ public class lista_amigos extends AppCompatActivity {
         }
         buscarProductos();
     }
-    private void sincronizar(){
-
+    private void sincronizar() {
+        try {
+            di = new detectarInternet(getApplicationContext());
+            if (di.hayConexionInternet()) {
+                if (datosJSON.length() > 0) {
+                    // Llama a obtenerDatosProductosServidor() una vez para sincronizar todos los datos
+                    obtenerDatosProductosServidor();
+                }
+            } else {
+                obtenerDatosProducto();
+            }
+        } catch (Exception e) {
+            mostrarMsg("hay perdon un error al cargar lista Producto: " + e.getMessage());
+        }
     }
+
     private void obtenerDatosProductosServidor(){//offline
         try {
             datosServidor = new obtenerDatosServidor();
