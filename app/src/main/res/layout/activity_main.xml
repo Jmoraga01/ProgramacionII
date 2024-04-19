@@ -63,12 +63,39 @@
         android:hint="Precio"
         android:inputType="number" />
 
+    <EditText
+        android:id="@+id/txtCosto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtPrecio"
+        android:layout_marginTop="26dp"
+        android:hint="Costo"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/txtStok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtCosto"
+        android:layout_marginTop="26dp"
+        android:hint="Stok"
+        android:inputType="number" />
+
     <Button
         android:id="@+id/btnGuardarProducto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtPrecio"
+        android:layout_below="@id/txtStok"
         android:layout_marginTop="27dp"
+        android:text="calcular" />
+
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtStok"
+        android:layout_marginTop="-1dp"
         android:text="GUARDAR PRODUCTOS" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

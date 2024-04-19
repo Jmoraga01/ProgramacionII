@@ -43,6 +43,8 @@ public class lista_amigos extends AppCompatActivity {
     detectarInternet di;
     int posicion=0;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,8 @@ public class lista_amigos extends AppCompatActivity {
         db = new DB(lista_amigos.this, "", null, 1);
         btnAgregarProductos = findViewById(R.id.fabAgregarProductos);
         btnAgregarProductos.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 parametros.putString("accion", "nuevo");
@@ -69,6 +73,8 @@ public class lista_amigos extends AppCompatActivity {
         }
         buscarProductos();
     }
+
+
     private void sincronizar() {
         try {
             di = new detectarInternet(getApplicationContext());
@@ -95,13 +101,16 @@ public class lista_amigos extends AppCompatActivity {
         try {
             datosServidor = new obtenerDatosServidor();
             String data = datosServidor.execute().get();
+
             jsonObject = new JSONObject(data);
             datosJSON = jsonObject.getJSONArray("rows");
             mostrarDatosProductos();
         }catch (Exception e){
             mostrarMsg("jaja : "+e.getMessage());
         }
+
     }
+
     private void mostrarDatosProductos() {
         try {
             if (datosJSON.length() > 0) {
@@ -111,6 +120,14 @@ public class lista_amigos extends AppCompatActivity {
                 JSONObject misDatosJSONObject;
                 for (int i = 0; i < datosJSON.length(); i++) {
                     misDatosJSONObject = datosJSON.getJSONObject(i).getJSONObject("value");
+
+                    // Obtener costo y precio
+                    double costo = Double.parseDouble(misDatosJSONObject.getString("costo"));
+                    double precio = Double.parseDouble(misDatosJSONObject.getString("precio"));
+
+                    // Calcular porcentaje de ganancia
+                    double ganancia = calcularGanancia(costo, precio);
+
                     misClientes = new amigos(
                             misDatosJSONObject.getString("_id"),
                             misDatosJSONObject.getString("_rev"),
@@ -120,8 +137,11 @@ public class lista_amigos extends AppCompatActivity {
                             misDatosJSONObject.getString("marca"),
                             misDatosJSONObject.getString("presentacion"),
                             misDatosJSONObject.getString("precio"),
+                            misDatosJSONObject.getString("costo"),
+                            misDatosJSONObject.getString("stok"),
                             misDatosJSONObject.getString("urlCompletaFoto")
                     );
+                    misClientes.setPorcentajeGanancia(String.valueOf(ganancia)); // Agregar el porcentaje de ganancia
                     alProductos.add(misClientes);
                 }
                 alProductosCopy.addAll(alProductos);
@@ -135,6 +155,12 @@ public class lista_amigos extends AppCompatActivity {
             mostrarMsg("Error al mostrar los datos: " + e.getMessage());
         }
     }
+
+    // Método para calcular el porcentaje de ganancia
+    private double calcularGanancia(double costo, double precio) {
+        return ((precio - costo) / costo) * 100;
+    }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -157,7 +183,7 @@ public class lista_amigos extends AppCompatActivity {
                 abrirActividad(parametros);
             } else if (item.getItemId()== R.id.mnxModificar) {
                 parametros.putString("accion", "modificar");
-                parametros.putString("productos", datosJSON.getJSONObject(posicion).toString());
+                parametros.putString("mauricio", datosJSON.getJSONObject(posicion).toString());
                 abrirActividad(parametros);
 
             } else if (item.getItemId() == R.id.mnxEliminar) {
@@ -229,7 +255,9 @@ public class lista_amigos extends AppCompatActivity {
                     jsonObject.put("marca", cProductos.getString(5));
                     jsonObject.put("presentacion", cProductos.getString(6));
                     jsonObject.put("precio", cProductos.getString(7));
-                    jsonObject.put("urlCompletaFoto", cProductos.getString(8));
+                    jsonObject.put("costo", cProductos.getString(8));
+                    jsonObject.put("stok", cProductos.getString(9));
+                    jsonObject.put("urlCompletaFoto", cProductos.getString(10));
 
 
                     jsonObjectValue.put("value", jsonObject);
