@@ -1,5 +1,6 @@
 package com.ugb.controlesbasicos;
 
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -14,6 +15,8 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     DB db;
 
     detectarInternet di;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +57,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(regresarLista);
             }
         });
-
-        btn = findViewById(R.id.btnGuardar);
+        btn = findViewById(R.id.btnGuardarProducto);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    // Obtener datos del formulario
                     tempVal = findViewById(R.id.txtcodigo);
                     String codigo = tempVal.getText().toString();
 
@@ -77,20 +77,47 @@ public class MainActivity extends AppCompatActivity {
                     tempVal = findViewById(R.id.txtPrecio);
                     String precio = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtCosto); // Agregar campo costo
-                    String costo = tempVal.getText().toString(); // Obtener costo
-
-                    // Calcular el porcentaje de ganancia
-                    double porcentajeGanancia = calcularPorcentajeGanancia(Double.parseDouble(costo), Double.parseDouble(precio));
-                    mostrarMsg("Porcentaje de ganancia: " + porcentajeGanancia + "%");
-
-                    // Resto del código para guardar el producto...
-                } catch (Exception e) {
-                    mostrarMsg("Error al guardar el producto: " + e.getMessage());
+                    String respuesta = "", actualizado="no";
+                    if( di.hayConexionInternet() ) {
+                        //obtener datos a enviar al servidor
+                        JSONObject datosProductos = new JSONObject();
+                        if (accion.equals("modificar")) {
+                            datosProductos.put("_id", id);
+                            datosProductos.put("_rev", rev);
+                        }
+                        datosProductos.put("idProducto", idProducto);
+                        datosProductos.put("codigo", codigo);
+                        datosProductos.put("descripcion", descripcion);
+                        datosProductos.put("marca", marca);
+                        datosProductos.put("presentacion", presentacion);
+                        datosProductos.put("precio", precio);
+                        datosProductos.put("urlCompletaFoto", urlCompletaFoto);
+                        //enviamos los datos
+                        enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
+                        respuesta = objGuardarDatosServidor.execute(datosProductos.toString()).get();
+                        //comprobacion de la respuesta
+                        JSONObject respuestaJSONObject = new JSONObject(respuesta);
+                        if (respuestaJSONObject.getBoolean("ok")) {
+                            id = respuestaJSONObject.getString("id");
+                            rev = respuestaJSONObject.getString("rev");
+                            actualizado="si";
+                        } else {
+                            respuesta = "Error al guardar en servidor: " + respuesta;
+                        }
+                    }
+                    String[] datos = new String[]{id, rev, idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto,actualizado};
+                    respuesta = db.administrar_amigos(accion, datos);
+                    if (respuesta.equals("ok")) {
+                        mostrarMsg("producto registrado con exito.");
+                        listarAmigos();
+                    } else {
+                        mostrarMsg("Error al intentar registrar el producto: " + respuesta);
+                    }
+                }catch (Exception e){
+                    mostrarMsg("Error al guadar datos en el servidor o en SQLite: "+ e.getMessage());
                 }
             }
         });
-
         img = findViewById(R.id.btnImgProducto);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,20 +125,50 @@ public class MainActivity extends AppCompatActivity {
                 tomarFotoProducto();
             }
         });
-
         mostrarDatosProducto();
     }
-
-    // Método para calcular el porcentaje de ganancia
-    private double calcularPorcentajeGanancia(double costo, double precioVenta) {
-        double ganancia = precioVenta - costo;
-        return (ganancia / costo) * 100;
-    }
-
     private void tomarFotoProducto(){
-        // Código para tomar la foto...
+        tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File fotoAmigo = null;
+        try{
+            fotoAmigo = crearImagenamigo();
+            if( fotoAmigo!=null ){
+                Uri urifotoAmigo = FileProvider.getUriForFile(MainActivity.this,
+                        "com.ugb.controlesbasicos.fileprovider", fotoAmigo);
+                tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, urifotoAmigo);
+                startActivityForResult(tomarFotoIntent, 1);
+            }else{
+                mostrarMsg("No se pudo tomar la foto");
+            }
+        }catch (Exception e){
+            mostrarMsg("Error al abrir la camara"+ e.getMessage());
+        }
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try{
+            if( requestCode==1 && resultCode==RESULT_OK ){
+                Bitmap imagenBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
+                img.setImageBitmap(imagenBitmap);
+            }else{
+                mostrarMsg("Se cancelo la toma de la foto");
+            }
+        }catch (Exception e){
+            mostrarMsg("Error al seleccionar la foto"+ e.getMessage());
+        }
+    }
+    private File crearImagenamigo() throws Exception{
+        String fechaHoraMs = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()),
+                fileName = "imagen_"+fechaHoraMs+"_";
+        File dirAlmacenamiento = getExternalFilesDir(Environment.DIRECTORY_DCIM);
+        if( dirAlmacenamiento.exists()==false ){
+            dirAlmacenamiento.mkdirs();
+        }
+        File image = File.createTempFile(fileName, ".jpg", dirAlmacenamiento);
+        urlCompletaFoto = image.getAbsolutePath();
+        return image;
+    }
     private void mostrarDatosProducto(){
         try{
             Bundle parametros = getIntent().getExtras();
@@ -147,16 +204,13 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             mostrarMsg("Error al mostrar los datos productos");
         }
-
     }
-
-
     private void mostrarMsg(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
-
     private void listarAmigos(){
         Intent intent = new Intent(getApplicationContext(), lista_amigos.class);
         startActivity(intent);
     }
+
 }
