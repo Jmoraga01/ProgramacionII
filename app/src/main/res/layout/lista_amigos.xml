@@ -28,6 +28,7 @@
         android:layout_marginBottom="80dp"
         android:src="@android:drawable/stat_notify_sync" />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAgregarProductos"
         android:layout_width="wrap_content"

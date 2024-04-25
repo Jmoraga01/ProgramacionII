@@ -91,4 +91,5 @@ public class amigos {
     public void setPrecio(String precio) {
         this.precio = precio;
     }
+
 }

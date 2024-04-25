@@ -40,5 +40,6 @@ public class detectarInternet {
         }
         return true; // Si no hay ninguna conexión conectada, entonces no hay conexión
     }
+
 }
 
