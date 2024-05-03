@@ -1,21 +1,9 @@
 <resources>
-    <string name="app_name">controlesBasicos</string>
-    <string-array name="spnLongitud">
-        <item>Metros</item>
-        <item>Cm</item>
-        <item>Pulgada</item>
-        <item>pie</item>
-        <item>Vara</item>
-        <item>Yarda</item>
-        <item>Km</item>
-        <item>Millla</item>
-    </string-array>
 
-    <string-array name="spnVolumen">
-        <item>litros</item>
-        <item>mililitros</item>
-        <item>Metros Cubicos</item>
-    </string-array>
-
+        <string name="app_name">CalculadoraAgua</string>
+        <string name="hint_metros_consumidos">Metros Consumidos</string>
+        <string name="calcular">Calcular</string>
+        <string name="resultado">Valor a pagar: %s</string>
+        <string name="mensaje_error">Por favor, ingrese un número válido.</string>
 
 </resources>
