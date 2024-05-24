@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <ImageButton
-        android:id="@+id/btnImgProducto"
+        android:id="@+id/btnImgAmigo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_alignParentStart="true"
@@ -19,60 +18,55 @@
         android:src="@android:drawable/ic_menu_camera" />
 
     <EditText
-        android:id="@+id/txtcodigo"
+        android:id="@+id/txtnombre"
+        android:hint="Nombre"
+        android:layout_below="@id/btnImgAmigo"
+        android:inputType="textPersonName"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnImgProducto"
-        android:layout_marginTop="15dp"
-        android:hint="Codigo"
-        android:inputType="number" />
-
+        android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtdescripcion"
+        android:id="@+id/txtdireccion"
+        android:hint="Direccion"
+        android:inputType="textMultiLine"
+        android:layout_below="@id/txtnombre"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtcodigo"
-        android:layout_marginTop="26dp"
-        android:hint="Descripcion"
-        android:inputType="textMultiLine" />
-
+        android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtMarca"
+        android:id="@+id/txtTelefono"
+        android:hint="Telefono"
+        android:inputType="phone"
+        android:layout_below="@id/txtdireccion"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtdescripcion"
-        android:layout_marginTop="26dp"
-        android:hint="Marca"
-        android:inputType="textMultiLine" />
-
+        android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtPresentacion"
+        android:id="@+id/txtEmail"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_below="@id/txtTelefono"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtMarca"
-        android:layout_marginTop="26dp"
-        android:hint="Presentacion"
-        android:inputType="textMultiLine" />
-
+        android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtPrecio"
+        android:id="@+id/txtDui"
+        android:hint="DUI"
+        android:inputType="number"
+        android:layout_below="@id/txtEmail"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtPresentacion"
-        android:layout_marginTop="26dp"
-        android:hint="Precio"
-        android:inputType="number" />
-
+        android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/btnGuardarProducto"
+        android:id="@+id/btnGuardarAmigo"
+        android:text="GUARDAR AMIGO"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtPrecio"
-        android:layout_marginTop="27dp"
-        android:text="GUARDAR PRODUCTOS" />
+        android:layout_below="@id/txtDui"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabListaProductos"
+        android:id="@+id/fabListaAmigos"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"
@@ -80,4 +74,5 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_menu_revert" />
+
 </RelativeLayout>

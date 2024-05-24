@@ -1,41 +1,46 @@
 package com.ugb.controlesbasicos;
 
+
+
 public class amigos {
-    String _id;
-    String _rev;
-    String idProducto;
-    String codigo;
-    String descripcion;
-    String marca;
-    String presentacion;
-    String precio;
+    String idAmigo;
+    String nombre;
+    String direccion;
+    String telefono;
+    String email;
+    String dui;
     String foto;
-
-
-    public amigos(String _id, String _rev, String idProducto, String codigo, String descripcion, String marca, String presentacion, String precio, String foto) {
-        this._id = _id;
-        this._rev = _rev;
-        this.idProducto = idProducto;
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.marca = marca;
-        this.presentacion = presentacion;
-        this.precio = precio;
+    String urlCompletaFotoFirestore;
+    String token;
+    public amigos(){}
+    public amigos(String idAmigo, String nombre, String direccion, String telefono, String email, String dui, String foto, String urlCompletaFotoFirestore, String token) {
+        this.idAmigo = idAmigo;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+        this.dui = dui;
         this.foto = foto;
+        this.urlCompletaFotoFirestore = urlCompletaFotoFirestore;
+        this.token = token;
+    }
 
+    public String getUrlCompletaFotoFirestore() {
+        return urlCompletaFotoFirestore;
     }
-    public String get_id() {
-        return _id;
+
+    public void setUrlCompletaFotoFirestore(String urlCompletaFotoFirestore) {
+        this.urlCompletaFotoFirestore = urlCompletaFotoFirestore;
     }
-    public void set_id(String _id) {
-        this._id = _id;
+
+    public String getToken() {
+        return token;
     }
-    public String get_rev() {
-        return _rev;
+
+    public void setToken(String token) {
+        this.token = token;
     }
-    public void set_rev(String _rev) {
-        this._rev = _rev;
-    }
+
     public String getFoto() {
         return foto;
     }
@@ -44,52 +49,51 @@ public class amigos {
         this.foto = foto;
     }
 
-    public String getIdProducto() {
-        return idProducto;
+    public String getIdAmigo() {
+        return idAmigo;
     }
 
-    public void setIdProducto(String idProducto) {
-        this.idProducto = idProducto;
+    public void setIdAmigo(String idAmigo) {
+        this.idAmigo = idAmigo;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public String getPresentacion() {
-        return presentacion;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPresentacion(String presentacion) {
-        this.presentacion = presentacion;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPrecio() {
-        return precio;
+    public String getDui() {
+        return dui;
     }
 
-    public void setPrecio(String precio) {
-        this.precio = precio;
+    public void setDui(String dui) {
+        this.dui = dui;
     }
-
 }

@@ -1,5 +1,6 @@
 package com.ugb.controlesbasicos;
 
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,52 +16,47 @@ import java.util.ArrayList;
 
 public class adaptadorImagenes extends BaseAdapter {
     Context context;
-    ArrayList<amigos> datosProductosArrayList;
-    amigos misClientes;
+    ArrayList<amigos> datosAmigosArrayList;
+    amigos misAmigos;
     LayoutInflater layoutInflater;
-    public adaptadorImagenes(Context context, ArrayList<amigos> datosProductosArrayList) {
+    public adaptadorImagenes(Context context, ArrayList<amigos> datosAmigosArrayList) {
         this.context = context;
-        this.datosProductosArrayList = datosProductosArrayList;
+        this.datosAmigosArrayList = datosAmigosArrayList;
     }
     @Override
     public int getCount() {
-        return datosProductosArrayList.size();
+        return datosAmigosArrayList.size();
     }
     @Override
     public Object getItem(int i) {
-        return datosProductosArrayList.get(i);
+        return datosAmigosArrayList.get(i);
     }
     @Override
     public long getItemId(int i) {
-        return i;
+        return i; //Long.parseLong(datosAmigosArrayList.get(i).getIdAmigo());
     }
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = layoutInflater.inflate(R.layout.listview_imagenes, viewGroup, false);
         try{
-            misClientes = datosProductosArrayList.get(i);
+            misAmigos = datosAmigosArrayList.get(i);
 
-            TextView tempVal = itemView.findViewById(R.id.lblCodigo);
-            tempVal.setText(misClientes.getCodigo());
+            TextView tempVal = itemView.findViewById(R.id.lblNombre);
+            tempVal.setText(misAmigos.getNombre());
 
-            tempVal = itemView.findViewById(R.id.lblDescripcion);
-            tempVal.setText(misClientes.getDescripcion());
+            tempVal = itemView.findViewById(R.id.lblTelefono);
+            tempVal.setText(misAmigos.getTelefono());
 
-            tempVal = itemView.findViewById(R.id.lblMarca);
-            tempVal.setText(misClientes.getMarca());
-
-            tempVal = itemView.findViewById(R.id.lblPrecio);
-            tempVal.setText(misClientes.getPrecio());
-
+            tempVal = itemView.findViewById(R.id.lblEmail);
+            tempVal.setText(misAmigos.getEmail());
 
             ImageView imgView = itemView.findViewById(R.id.imgFoto);
-            Bitmap imagenBitmap = BitmapFactory.decodeFile(misClientes.getFoto());
+            Bitmap imagenBitmap = BitmapFactory.decodeFile(misAmigos.getFoto());
             imgView.setImageBitmap(imagenBitmap);
         }catch (Exception e){
             Toast.makeText(context, "Error en Adaptador Imagenes: "+ e.getMessage(), Toast.LENGTH_LONG).show();
         }
         return itemView;
     }
-
 }
