@@ -11,6 +11,13 @@
     <color name="lavender">#8692f7</color>
     <color name="purple">#800080</color>
     <color name="red">#FF0000</color>
+    <color name="azul1">#0D426C </color>
+    <color name="uno">#0CA68A </color>
+    <color name="verde">#4CAF50 </color>
+
+
+    <color name="turquesa">#1ABC9C </color>
+    <color name="grisOscuroo">#333333 </color>
 
 
     <color name="background_color">#F0F0F0</color>
