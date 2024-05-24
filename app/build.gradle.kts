@@ -43,4 +43,10 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.firebaseui:firebase-ui-storage:8.0.2")
+    implementation("com.google.firebase:firebase-auth:23.0.0")
+
+    //implementation("com.github.denzcoskun:ImageSlideshow:0.1.0")
+
+    //para generar el pdf
+    implementation("com.itextpdf:itext7-core:7.1.15")
 }
