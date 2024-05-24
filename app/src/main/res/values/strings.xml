@@ -5,50 +5,56 @@
     <string name="nav_close">Close Navigation Drawer</string>
 
 
+
     <string name="vitamia1">18 de enero del 2025
 </string>
-    <string name="vitamina1Desc">Tomar una cada dia</string>
+    <string name="vitamina1Desc"> Tomar una tableta de 10mg una vez al día, preferiblemente despues de que haya comido alimentos. Solo pueden tomarla mayores de 18 años.</string>
 
     <string name="vitamina2">23 de julio del 2027</string>
-    <string name="vitamina2Desc">Tomar una despues de comer</string>
+    <string name="vitamina2Desc">Tomar una tableta según sea necesario para aliviar la ansiedad. Comenzar con una dosis baja e incrementar según sea necesario, sin exceder la dosis máxima diaria recomendada. Pueden tomarla mayores de 18 años.</string>
 
     <string name="vitamina3">14 de agosto del 2025</string>
-    <string name="vitamina3Desc">Tomar una despues de cada almuerzo</string>
+    <string name="vitamina3Desc"> Tomar una cápsula diariamente con un vaso de agua, preferiblemente despues de comer comida. Pueden tomarla mayores de 17 años.</string>
 
     <string name="vitamina4">31 de junio de 2026</string>
-    <string name="vitamina4Desc">Tomar una 4</string>
+    <string name="vitamina4Desc">Tomar una cucharada aproximadamente 15 ml una vez al día. Puede ser tomado solo o mezclado con agua o jugo, preferiblemente con una comida. Pueden tomarla niños y adultos.</string>
 
     <string name="vitamina5">12 de octubre de 2026</string>
-    <string name="vitamina5Desc">tomar una 5</string>
+    <string name="vitamina5Desc">Tomar según la prescripción médica, generalmente 0.25 a 0.5 mg tres veces al día. Solo para adultos. No se recomienda su uso en niños.</string>
 
     <string name="vitamina6">30 de diciembre del 2024</string>
-    <string name="vitamina6Desc">Tomar una 6</string>
+    <string name="vitamina6Desc">Tomar una cápsula de 500 mg cada 8 horas, o según lo indicado por el médico. Para niños y adultos. La dosis para niños debe ser indicada por un médico, generalmente basada en el peso corporal.</string>
 
     <string name="vitamina7">18 de enero del 2027</string>
-    <string name="vitamina7Desc">Tomar una 7</string>
+    <string name="vitamina7Desc">Tomar una tableta de 10 mg una vez al día. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
 
     <string name="vitamina8">14 de noviembre del 2024</string>
-    <string name="vitamina8Desc">Tomar una 7</string>
+    <string name="vitamina8Desc"> Tomar una tableta cada 12 horas. Solo para adultos, salvo indicación contraria de un médico.</string>
 
     <string name="vitamina9">18 de marzo del 2027</string>
-    <string name="vitamina9Desc">Tomar una 7</string>
+    <string name="vitamina9Desc">Tomar una tableta de 500 mg cada 12 horas durante 7-14 días, o según lo indicado por el médico. Solo para adultos. La dosis para niños debe ser indicada por un médico.</string>
 
     <string name="vitamina10">10 de agosto del 2026</string>
-    <string name="vitamina10Desc">Tomar una 7</string>
+    <string name="vitamina10Desc">Tomar 10 ml cada 4-6 horas, no exceder 6 dosis en 24 horas. Para niños mayores de 6 años y adultos. La dosis para niños menores de 6 años debe ser indicada por un médico.
+
+</string>
 
     <string name="vitamina11">10 de mayo del 2027</string>
-    <string name="vitamina11Desc">Tomar una 7</string>
+    <string name="vitamina11Desc">Tomar una tableta cada 6 horas, no exceder 4 tabletas en 24 horas. Solo para adultos. No se recomienda su uso en niños.
+
+</string>
 
     <string name="vitamina12">23 de febrero del 2025</string>
-    <string name="vitamina12Desc">Tomar una 7</string>
+    <string name="vitamina12Desc">Administrar 2.5 ml dos veces al día, o según lo indicado por el pediatra. Solo para niños. La dosis debe ser indicada por un pediatra.
+
+</string>
 
     <string name="vitamina13">27 de diciembre del 2024</string>
-    <string name="vitamina13Desc">Tomar una 7</string>
+    <string name="vitamina13Desc">Aplicar una capa delgada en el área afectada 2-3 veces al día. Para niños y adultos. Evitar el contacto con ojos y mucosas.</string>
 
     <string name="vitamina14">11 de septiembre del 2028</string>
-    <string name="vitamina14Desc">Tomar una 7</string>
-
+    <string name="vitamina14Desc">Tomar una tableta de 500 mg cada 4-6 horas, no exceder 3 g en 24 horas. Solo para adultos. No se recomienda su uso en niños.
+</string>
     <string name="vitamina15">3 de enero del 2025</string>
-    <string name="vitamina15Desc">Tomar una 7</string>
-
+    <string name="vitamina15Desc">Tomar una tableta de 4 mg cada 4-6 horas, no exceder 24 mg en 24 horas. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
 </resources>
