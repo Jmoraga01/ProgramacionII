@@ -91,7 +91,7 @@ public class UploadActivity extends AppCompatActivity {
                 && uploadImage.getDrawable() != null && bitmapImage != null){
 
             dbHelper.storeData(new ModelClass(uploadName.getText().toString(), uploadEmail.getText().toString(), bitmapImage));
-            Intent intent = new Intent(UploadActivity.this, MainActivity.class);
+            Intent intent = new Intent(UploadActivity.this, MainActivity2.class);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Los campos son obligatorios", Toast.LENGTH_SHORT).show();

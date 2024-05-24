@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
+        app:cardBackgroundColor="@color/lavender"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <!--<com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:iss_auto_cycle="true"
+            app:iss_corner_radius="0"
+            app:iss_delay="1000"
+            app:iss_period="1000"
+            app:iss_title_background="@drawable/gradient" />-->
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button_productos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Ver productos" />
+
+</RelativeLayout>
