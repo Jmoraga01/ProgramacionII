@@ -1,0 +1,125 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailedActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailName"
+            android:layout_marginTop="14dp"
+            android:text="Recipe Name"
+            android:textSize="24sp"
+            android:textColor="@color/lavender"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardImage"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/detailImage"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/cuatrol"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio del producto:"
+            android:textColor="@color/lavender"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="precio"
+            android:layout_marginStart="16dp"
+            android:textSize="16sp"
+            android:id="@+id/detailTime"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de vencimiento:"
+            android:textColor="@color/lavender"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vitamia1"
+            android:layout_marginStart="16dp"
+            android:textSize="16sp"
+            android:id="@+id/detailIngredients"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indicaciones:"
+            android:textColor="@color/lavender"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vitamina1Desc"
+            android:layout_marginStart="16dp"
+            android:textSize="16sp"
+            android:id="@+id/detailDesc"/>
+
+
+        <Button
+            android:id="@+id/addToCartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar al carrito"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/lavender"/>
+
+
+
+        <ImageButton
+            android:id="@+id/regresar2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_regresar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-750dp" />
+
+    </LinearLayout>
+
+</ScrollView>
+

@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
 
     private void navigateToListView() {
         // Crear un nuevo Intent para iniciar la actividad MainActivity2
-        Intent intent = new Intent(getActivity(), MainActivity2.class);
+        Intent intent = new Intent(getActivity(), ProductosActivity.class);
         // Iniciar la actividad MainActivity2
         startActivity(intent);
     }
