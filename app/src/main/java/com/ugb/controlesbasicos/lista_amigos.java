@@ -58,6 +58,17 @@ public class lista_amigos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_amigos);
 
+
+        //boton flotante para regresar al inicio
+        btn = findViewById(R.id.fabregresar2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(lista_amigos.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+        //boton flotante para agregar amigos
         db = new DB(lista_amigos.this, "", null, 1);
         btn = findViewById(R.id.fabAgregarAmigos);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +78,7 @@ public class lista_amigos extends AppCompatActivity {
                 abrirActividad(parametros);
             }
         });
+        //boton flotante para sincronizar
         btn = findViewById(R.id.fabSincronizarAmigos);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

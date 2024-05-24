@@ -52,6 +52,11 @@ dependencies {
 
     //implementation("com.github.denzcoskun:ImageSlideshow:0.1.0")
 
+    //elegir ciudad
+    implementation("com.hbb20:ccp:2.5.1")
+
+    implementation("com.googlecode.libphonenumber:libphonenumber:8.12.34")
+
     //para generar el pdf
     implementation("com.itextpdf:itext7-core:7.1.15")
 }

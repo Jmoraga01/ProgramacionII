@@ -1,6 +1,8 @@
 package com.ugb.controlesbasicos;
 
 
+
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -14,6 +16,8 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -28,6 +32,8 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.hbb20.CountryCodePicker;
 
 import org.json.JSONObject;
 
@@ -39,16 +45,18 @@ public class MainActivity extends AppCompatActivity {
     TextView tempVal;
     Button btn;
     FloatingActionButton btnRegresar;
-    String id="", rev="", idAmigo="", accion="nuevo";
+    String id = "", rev = "", idAmigo = "", accion = "nuevo";
     ImageView img;
     String urlCompletaFoto;
     String urlCompletaFotoFirestore;
-    String miToken="";
+    String miToken = "";
     Intent tomarFotoIntent;
     utilidades utls;
     DB db;
     detectarInternet di;
     DatabaseReference databaseReference;
+    CountryCodePicker countryCodePicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,38 +88,65 @@ public class MainActivity extends AppCompatActivity {
                 tomarFotoAmigo();
             }
         });
+
+
+        // De aqui comienza lo que coloque sobre el area del telefono CountryCodePicker
+        countryCodePicker = findViewById(R.id.countrycodepicker);
+        countryCodePicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                actualizarPrefijoTelefono();
+            }
+        });
+
         obtenerToken();
         mostrarDatosAmigos();
     }
-    private void obtenerToken(){
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(tarea->{
-            if( !tarea.isSuccessful() ) return;
+
+
+    private void actualizarPrefijoTelefono() {
+        // Obtener el prefijo telefónico del país seleccionado
+        String countryCode = countryCodePicker.getSelectedCountryNameCode();
+        int countryCodePrefix = PhoneNumberUtil.getInstance().getCountryCodeForRegion(countryCode);
+
+        // Actualizar el campo de teléfono con el prefijo telefónico
+        EditText txtTelefono = findViewById(R.id.txtTelefono);
+        String phoneNumber = txtTelefono.getText().toString();
+        String formattedPhoneNumber = "+" + countryCodePrefix + phoneNumber;
+        txtTelefono.setText(formattedPhoneNumber);
+    }
+
+    private void obtenerToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(tarea -> {
+            if (!tarea.isSuccessful()) return;
             miToken = tarea.getResult();
         });
     }
-    private void subirFotoFirestore(){
+
+    private void subirFotoFirestore() {
         mostrarMsg("Subiendo foto...");
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         Uri file = Uri.fromFile(new File(urlCompletaFoto));
-        final StorageReference reference = storageReference.child("foto/"+file.getLastPathSegment());
+        final StorageReference reference = storageReference.child("foto/" + file.getLastPathSegment());
 
         final UploadTask tareaSubir = reference.putFile(file);
-        tareaSubir.addOnFailureListener(e->{
-            mostrarMsg("Error al subir la foto a firestore: "+ e.getMessage());
+        tareaSubir.addOnFailureListener(e -> {
+            mostrarMsg("Error al subir la foto a firestore: " + e.getMessage());
         });
-        tareaSubir.addOnSuccessListener(instantanea->{
+        tareaSubir.addOnSuccessListener(instantanea -> {
             mostrarMsg("Foto subida con exito.");
-            Task<Uri> descargarUri = tareaSubir.continueWithTask(tarea->reference.getDownloadUrl()).addOnCompleteListener(tarea->{
-                if( tarea.isSuccessful() ){
+            Task<Uri> descargarUri = tareaSubir.continueWithTask(tarea -> reference.getDownloadUrl()).addOnCompleteListener(tarea -> {
+                if (tarea.isSuccessful()) {
                     urlCompletaFotoFirestore = tarea.getResult().toString();
                     guardarAmigo();
-                }else{
+                } else {
                     mostrarMsg("Error al obtener la ruta de la foto. ");
                 }
             });
         });
     }
-    private void guardarAmigo(){
+
+    private void guardarAmigo() {
         try {
             tempVal = findViewById(R.id.txtnombre);
             String nombre = tempVal.getText().toString();
@@ -131,74 +166,78 @@ public class MainActivity extends AppCompatActivity {
             databaseReference = FirebaseDatabase.getInstance().getReference("amigos");
             String key = databaseReference.push().getKey();
 
-            if( miToken.equals("") || miToken==null ){
+            if (miToken.equals("") || miToken == null) {
                 obtenerToken();
             }
-            if( miToken!="" && miToken!=null ){
-                amigos amigo = new amigos(idAmigo,nombre,direccion,tel,email,dui,urlCompletaFoto,urlCompletaFotoFirestore,miToken);
-                if(key!=null){
-                    databaseReference.child(key).setValue(amigo).addOnSuccessListener(aVoid->{
+            if (miToken != "" && miToken != null) {
+                amigos amigo = new amigos(idAmigo, nombre, direccion, tel, email, dui, urlCompletaFoto, urlCompletaFotoFirestore, miToken);
+                if (key != null) {
+                    databaseReference.child(key).setValue(amigo).addOnSuccessListener(aVoid -> {
                         mostrarMsg("Amigo registrado con exito.");
                         listarAmigos();
                     });
-                }else{
+                } else {
                     mostrarMsg("Error al intentar guardar el amigo.");
                 }
-            }else{
+            } else {
                 mostrarMsg("Error el telefono no es compatible con las notificaciones");
             }
-        }catch (Exception e){
-            mostrarMsg("Error al guadar datos en el servidor o en SQLite: "+ e.getMessage());
+        } catch (Exception e) {
+            mostrarMsg("Error al guadar datos en el servidor o en SQLite: " + e.getMessage());
         }
     }
-    private void tomarFotoAmigo(){
+
+    private void tomarFotoAmigo() {
         tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File fotoAmigo = null;
-        try{
+        try {
             fotoAmigo = crearImagenamigo();
-            if( fotoAmigo!=null ){
+            if (fotoAmigo != null) {
                 Uri urifotoAmigo = FileProvider.getUriForFile(MainActivity.this,
                         "com.ugb.controlesbasicos.fileprovider", fotoAmigo);
                 tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, urifotoAmigo);
                 startActivityForResult(tomarFotoIntent, 1);
-            }else{
+            } else {
                 mostrarMsg("No se pudo tomar la foto");
             }
-        }catch (Exception e){
-            mostrarMsg("Error al abrir la camara"+ e.getMessage());
+        } catch (Exception e) {
+            mostrarMsg("Error al abrir la camara" + e.getMessage());
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        try{
-            if( requestCode==1 && resultCode==RESULT_OK ){
+        try {
+            if (requestCode == 1 && resultCode == RESULT_OK) {
                 Bitmap imagenBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
                 img.setImageBitmap(imagenBitmap);
-            }else{
+            } else {
                 mostrarMsg("Se cancelo la toma de la foto");
             }
-        }catch (Exception e){
-            mostrarMsg("Error al seleccionar la foto"+ e.getMessage());
+        } catch (Exception e) {
+            mostrarMsg("Error al seleccionar la foto" + e.getMessage());
         }
     }
-    private File crearImagenamigo() throws Exception{
+
+    private File crearImagenamigo() throws Exception {
         String fechaHoraMs = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()),
-                fileName = "imagen_"+fechaHoraMs+"_";
+                fileName = "imagen_" + fechaHoraMs + "_";
         File dirAlmacenamiento = getExternalFilesDir(Environment.DIRECTORY_DCIM);
-        if( dirAlmacenamiento.exists()==false ){
+        if (dirAlmacenamiento.exists() == false) {
             dirAlmacenamiento.mkdirs();
         }
         File image = File.createTempFile(fileName, ".jpg", dirAlmacenamiento);
         urlCompletaFoto = image.getAbsolutePath();
         return image;
     }
-    private void mostrarDatosAmigos(){
-        try{
+
+    private void mostrarDatosAmigos() {
+        try {
             Bundle parametros = getIntent().getExtras();
             accion = parametros.getString("accion");
 
-            if(accion.equals("modificar")){
+            if (accion.equals("modificar")) {
                 JSONObject jsonObject = new JSONObject(parametros.getString("amigos")).getJSONObject("value");
                 id = jsonObject.getString("_id");
                 rev = jsonObject.getString("_rev");
@@ -222,18 +261,21 @@ public class MainActivity extends AppCompatActivity {
                 urlCompletaFoto = jsonObject.getString("urlCompletaFoto");
                 Bitmap imagenBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
                 img.setImageBitmap(imagenBitmap);
-            }else{//nuevos registros
+            } else {//nuevos registros
                 idAmigo = utls.generarIdUnico();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             mostrarMsg("Error al mostrar los datos amigos");
         }
     }
-    private void mostrarMsg(String msg){
+
+    private void mostrarMsg(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
-    private void listarAmigos(){
+
+    private void listarAmigos() {
         Intent intent = new Intent(getApplicationContext(), lista_amigos.class);
         startActivity(intent);
     }
+
 }
