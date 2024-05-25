@@ -14,11 +14,11 @@
             android:title="Inicio"/>
         <item
             android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_baseline_person_24"
+            android:icon="@drawable/img_16"
             android:title="Editar mi perfil"/>
         <item
             android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_chat"
+            android:icon="@drawable/img_10"
             android:title="Chat en vivo"/>
         <item
             android:id="@+id/nav_settings"
@@ -37,7 +37,7 @@
         <menu>
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/nav_logout"
+                android:icon="@drawable/img_11"
                 android:title="Cerrar Sesión"/>
         </menu>
     </item>

@@ -19,6 +19,9 @@
     <color name="turquesa">#1ABC9C </color>
     <color name="grisOscuroo">#333333 </color>
 
+    <color name="light_gray">#e0e0e0</color>
+
+
 
     <color name="background_color">#F0F0F0</color>
     <color name="button_color">#6200EE</color>
