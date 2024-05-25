@@ -34,6 +34,18 @@
         android:theme="@style/Theme.ControlesBasicos"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivityPersona"
+            android:exported="false" />
+        <activity
+            android:name=".DetallePersonaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetallesPersonas"
+            android:exported="false" />
+        <activity
+            android:name=".PersonasActivity"
+            android:exported="false" />
+        <activity
             android:name=".MoreInfoActivity"
             android:exported="false" />
         <activity

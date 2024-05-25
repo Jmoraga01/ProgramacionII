@@ -126,7 +126,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
             selectedFragment = new ShareFragment();
 
         } else if (itemId == R.id.nav_about) {
-            Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+            Intent intent = new Intent(MainActivity2.this, MainActivityPersona.class);
             startActivity(intent);
             return true;
 

@@ -1,0 +1,49 @@
+package com.ugb.controlesbasicos;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+// DetallePersonaActivity.java
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class DetallePersonaActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detalle_persona);
+
+        ImageView imgFoto = findViewById(R.id.imgFoto);
+        TextView txtNombre = findViewById(R.id.txtNombre);
+        TextView txtEdad = findViewById(R.id.txtEdad);   // Verificar que ID coincide con XML
+        TextView txtCorreo = findViewById(R.id.txtCorreo); // Verificar que ID coincide con XML
+        TextView txtProfesion = findViewById(R.id.txtProfesion);
+
+        // Obtener los datos del intent
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            imgFoto.setImageResource(extras.getInt("foto"));
+            txtNombre.setText(extras.getString("nombre"));
+            txtEdad.setText(String.valueOf(extras.getInt("edad")));
+            txtCorreo.setText(extras.getString("correo"));
+            txtProfesion.setText(extras.getString("profesion"));
+        }
+    }
+}
