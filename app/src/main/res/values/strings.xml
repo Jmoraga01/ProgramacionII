@@ -5,7 +5,6 @@
     <string name="nav_close">Close Navigation Drawer</string>
 
 
-
     <string name="vitamia1">18 de enero del 2025
 </string>
     <string name="vitamina1Desc"> Tomar una tableta de 10mg una vez al día, preferiblemente despues de que haya comido alimentos. Solo pueden tomarla mayores de 18 años.</string>
@@ -59,7 +58,6 @@
     <string name="vitamina15Desc">Tomar una tableta de 4 mg cada 4-6 horas, no exceder 24 mg en 24 horas. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
 
 
-
     <string name="profile_picture_desc">Profile picture</string>
     <string name="hint_name">Nombre</string>
     <string name="hint_address">Dirección</string>
@@ -68,5 +66,10 @@
     <string name="hint_dui">DUI</string>
     <string name="save_friend">Guardar Amigo</string>
     <string name="list_friends_desc">Lista de amigos</string>
+
+    //like
+    <string name="like_button">Like Button</string>
+
+    <color name="gray">#808080</color>
 
 </resources>
