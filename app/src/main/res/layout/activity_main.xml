@@ -15,7 +15,7 @@
         android:layout_marginTop="40dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_profile_picture_placeholder"
+        android:src="@drawable/img_19"
         android:contentDescription="@string/profile_picture_desc" />
 
     <EditText

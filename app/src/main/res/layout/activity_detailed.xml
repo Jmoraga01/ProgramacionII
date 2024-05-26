@@ -1,21 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/background_color"
     tools:context=".DetailedActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
 
         <TextView
+            android:id="@+id/detailName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/detailName"
             android:layout_marginTop="14dp"
             android:text="Recipe Name"
             android:textSize="24sp"
@@ -24,18 +27,18 @@
             android:layout_gravity="center"/>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cardImage"
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="16dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
 
             <ImageView
+                android:id="@+id/detailImage"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:id="@+id/detailImage"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/cuatrol"
                 android:scaleType="centerCrop"/>
@@ -53,13 +56,13 @@
             android:textSize="18sp"/>
 
         <TextView
+            android:id="@+id/detailTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="precio"
             android:layout_marginStart="16dp"
+            android:text="precio"
             android:textSize="16sp"
-            android:id="@+id/detailTime"/>
-
+            android:textColor="@color/grisOscuroo"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,12 +75,13 @@
             android:textSize="18sp"/>
 
         <TextView
+            android:id="@+id/detailIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/vitamia1"
             android:layout_marginStart="16dp"
+            android:text="@string/vitamia1"
             android:textSize="16sp"
-            android:id="@+id/detailIngredients"/>
+            android:textColor="@color/grisOscuroo"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -90,34 +94,50 @@
             android:textSize="18sp"/>
 
         <TextView
+            android:id="@+id/detailDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/vitamina1Desc"
             android:layout_marginStart="16dp"
+            android:text="@string/vitamina1Desc"
             android:textSize="16sp"
-            android:id="@+id/detailDesc"/>
+            android:textColor="@color/grisOscuroo"/>
 
 
-        <Button
+        <ImageButton
             android:id="@+id/addToCartButton"
+            android:layout_width="91dp"
+            android:layout_height="57dp"
+            android:layout_marginLeft="86dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/lavender"
+            android:contentDescription="Agregar al carrito"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_21" />
+
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agregar al carrito"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@color/lavender"/>
-
-
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="-43dp"
+            android:text="agregar al carrito"
+            android:textColor="@color/lavender"
+            android:textSize="23dp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/regresar2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_regresar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="-750dp" />
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Regresar"
+            android:src="@drawable/ic_regresar" />
 
     </LinearLayout>
 

@@ -50,7 +50,7 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-storage:8.0.2")
     implementation("com.google.firebase:firebase-auth:23.0.0")
 
-    //implementation("com.github.denzcoskun:ImageSlideshow:0.1.0")
+
 
     //elegir ciudad
     implementation("com.hbb20:ccp:2.5.1")

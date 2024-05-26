@@ -23,19 +23,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //CUANDO PONGA DE NUEVO LA IMAGEN DESLIZANTE QUITAR LOS COMENTARIOS
-
-        /*ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
-
-        slideModels.add(new SlideModel(R.drawable.vitaminan, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.uno, ScaleTypes.FIT));
-        //slideModels.add(new SlideModel(R.drawable.dos, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.tres, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.cuatro, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.cinco, ScaleTypes.FIT));
-
-        imageSlider.setImageList(slideModels, ScaleTypes.FIT);*/
 
         Button verProductosButton = view.findViewById(R.id.button_productos);
         verProductosButton.setOnClickListener(new View.OnClickListener() {
