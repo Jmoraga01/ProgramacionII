@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
         beautyCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  navigateToActivity(GripeTosActivity.class);
+                navigateToActivity(GripeTosActivity.class);
             }
         });
 
@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
         grocCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // navigateToActivity(PrimerosAuxiliosActivity.class);
+                navigateToActivity(PrimerosAuxiliosActivity.class);
             }
         });
 

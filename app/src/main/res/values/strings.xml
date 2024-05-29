@@ -69,30 +69,30 @@
 
     //para la salud bocal
 
-    <string name="g1">18 de enero del 2025
+    <string name="sb1">18 de enero del 2025
 </string>
-    <string name="g1Desc"> hola si funciona</string>
+    <string name="sb1Desc"> hola si funciona</string>
 
-    <string name="g2">23 de julio del 2027</string>
-    <string name="g2Desc">Tomar una tableta según sea necesario para aliviar la ansiedad. Comenzar con una dosis baja e incrementar según sea necesario, sin exceder la dosis máxima diaria recomendada. Pueden tomarla mayores de 18 años.</string>
+    <string name="sb2">23 de julio del 2027</string>
+    <string name="sb2Desc">Tomar una tableta según sea necesario para aliviar la ansiedad. Comenzar con una dosis baja e incrementar según sea necesario, sin exceder la dosis máxima diaria recomendada. Pueden tomarla mayores de 18 años.</string>
 
-    <string name="g3">14 de agosto del 2025</string>
-    <string name="g3Desc"> Tomar una cápsula diariamente con un vaso de agua, preferiblemente despues de comer comida. Pueden tomarla mayores de 17 años.</string>
+    <string name="sb3">14 de agosto del 2025</string>
+    <string name="sb3Desc"> Tomar una cápsula diariamente con un vaso de agua, preferiblemente despues de comer comida. Pueden tomarla mayores de 17 años.</string>
 
-    <string name="g4">31 de junio de 2026</string>
-    <string name="g4Desc">Tomar una cucharada aproximadamente 15 ml una vez al día. Puede ser tomado solo o mezclado con agua o jugo, preferiblemente con una comida. Pueden tomarla niños y adultos.</string>
+    <string name="sb4">31 de junio de 2026</string>
+    <string name="sb4Desc">Tomar una cucharada aproximadamente 15 ml una vez al día. Puede ser tomado solo o mezclado con agua o jugo, preferiblemente con una comida. Pueden tomarla niños y adultos.</string>
 
-    <string name="g5">12 de octubre de 2026</string>
-    <string name="g5Desc">Tomar según la prescripción médica, generalmente 0.25 a 0.5 mg tres veces al día. Solo para adultos. No se recomienda su uso en niños.</string>
+    <string name="sb5">12 de octubre de 2026</string>
+    <string name="sb5Desc">Tomar según la prescripción médica, generalmente 0.25 a 0.5 mg tres veces al día. Solo para adultos. No se recomienda su uso en niños.</string>
 
-    <string name="g6">30 de diciembre del 2024</string>
-    <string name="g6Desc">Tomar una cápsula de 500 mg cada 8 horas, o según lo indicado por el médico. Para niños y adultos. La dosis para niños debe ser indicada por un médico, generalmente basada en el peso corporal.</string>
+    <string name="sb6">30 de diciembre del 2024</string>
+    <string name="sb6Desc">Tomar una cápsula de 500 mg cada 8 horas, o según lo indicado por el médico. Para niños y adultos. La dosis para niños debe ser indicada por un médico, generalmente basada en el peso corporal.</string>
 
-    <string name="g7">18 de enero del 2027</string>
-    <string name="g7Desc">Tomar una tableta de 10 mg una vez al día. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
+    <string name="sb7">18 de enero del 2027</string>
+    <string name="sb7Desc">Tomar una tableta de 10 mg una vez al día. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
 
-    <string name="g8">14 de noviembre del 2024</string>
-    <string name="g8Desc"> Tomar una tableta cada 12 horas. Solo para adultos, salvo indicación contraria de un médico.</string>
+    <string name="sb8">14 de noviembre del 2024</string>
+    <string name="sb8Desc"> Tomar una tableta cada 12 horas. Solo para adultos, salvo indicación contraria de un médico.</string>
 
     //aqui termina para la salud bocal
 
@@ -126,7 +126,6 @@
     //aqui termina para la salud visual
 
 
-
     //para la vitaminas
 
     <string name="b1">18 de enero del 2025
@@ -156,6 +155,66 @@
 
     //aqui termina para la vitaminas
 
+
+    //para la gripe y tos
+
+    <string name="g1">18 de enero del 2025
+</string>
+    <string name="g1Desc"> hola si funciona</string>
+
+    <string name="g2">23 de julio del 2027</string>
+    <string name="g2Desc">Tomar una tableta según sea necesario para aliviar la ansiedad. Comenzar con una dosis baja e incrementar según sea necesario, sin exceder la dosis máxima diaria recomendada. Pueden tomarla mayores de 18 años.</string>
+
+    <string name="g3">14 de agosto del 2025</string>
+    <string name="g3Desc"> Tomar una cápsula diariamente con un vaso de agua, preferiblemente despues de comer comida. Pueden tomarla mayores de 17 años.</string>
+
+    <string name="g4">31 de junio de 2026</string>
+    <string name="g4Desc">Tomar una cucharada aproximadamente 15 ml una vez al día. Puede ser tomado solo o mezclado con agua o jugo, preferiblemente con una comida. Pueden tomarla niños y adultos.</string>
+
+    <string name="g5">12 de octubre de 2026</string>
+    <string name="g5Desc">Tomar según la prescripción médica, generalmente 0.25 a 0.5 mg tres veces al día. Solo para adultos. No se recomienda su uso en niños.</string>
+
+    <string name="g6">30 de diciembre del 2024</string>
+    <string name="g6Desc">Tomar una cápsula de 500 mg cada 8 horas, o según lo indicado por el médico. Para niños y adultos. La dosis para niños debe ser indicada por un médico, generalmente basada en el peso corporal.</string>
+
+    <string name="g7">18 de enero del 2027</string>
+    <string name="g7Desc">Tomar una tableta de 10 mg una vez al día. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
+
+    <string name="g8">14 de noviembre del 2024</string>
+    <string name="g8Desc"> Tomar una tableta cada 12 horas. Solo para adultos, salvo indicación contraria de un médico.</string>
+
+    //aqui termina para la gripe y tos
+
+
+
+    //para primeros auxilios
+
+    <string name="p1">18 de enero del 2025
+</string>
+    <string name="p1Desc"> hola si funciona</string>
+
+    <string name="p2">23 de julio del 2027</string>
+    <string name="p2Desc">Tomar una tableta según sea necesario para aliviar la ansiedad. Comenzar con una dosis baja e incrementar según sea necesario, sin exceder la dosis máxima diaria recomendada. Pueden tomarla mayores de 18 años.</string>
+
+    <string name="p3">14 de agosto del 2025</string>
+    <string name="p3Desc"> Tomar una cápsula diariamente con un vaso de agua, preferiblemente despues de comer comida. Pueden tomarla mayores de 17 años.</string>
+
+    <string name="p4">31 de junio de 2026</string>
+    <string name="p4Desc">Tomar una cucharada aproximadamente 15 ml una vez al día. Puede ser tomado solo o mezclado con agua o jugo, preferiblemente con una comida. Pueden tomarla niños y adultos.</string>
+
+    <string name="p5">12 de octubre de 2026</string>
+    <string name="p5Desc">Tomar según la prescripción médica, generalmente 0.25 a 0.5 mg tres veces al día. Solo para adultos. No se recomienda su uso en niños.</string>
+
+    <string name="p6">30 de diciembre del 2024</string>
+    <string name="p6Desc">Tomar una cápsula de 500 mg cada 8 horas, o según lo indicado por el médico. Para niños y adultos. La dosis para niños debe ser indicada por un médico, generalmente basada en el peso corporal.</string>
+
+    <string name="p7">18 de enero del 2027</string>
+    <string name="p7Desc">Tomar una tableta de 10 mg una vez al día. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
+
+    <string name="p8">14 de noviembre del 2024</string>
+    <string name="p8Desc"> Tomar una tableta cada 12 horas. Solo para adultos, salvo indicación contraria de un médico.</string>
+
+    //aqui termina para primeros auxilios
 
 
     //like

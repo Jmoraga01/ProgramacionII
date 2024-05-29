@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class SaludBucalActivity extends AppCompatActivity {
+public class PrimerosAuxiliosActivity extends AppCompatActivity {
 
     private ListView listView;
     private ListAdapter listAdapter;
@@ -20,27 +20,27 @@ public class SaludBucalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_salud_bucal);
+        setContentView(R.layout.activity_primeros_auxilios);
 
         listView = findViewById(R.id.listview);
 
-        int[] imageList = {R.drawable.sb1, R.drawable.sb2, R.drawable.sb3, R.drawable.sb4, R.drawable.sb5, R.drawable.sb6, R.drawable.sb7, R.drawable.sb8};
-        int[] ingredientList = {R.string.sb1, R.string.sb2, R.string.sb3, R.string.sb4, R.string.sb5, R.string.sb6, R.string.sb7, R.string.sb8};
-        int[] descList = {R.string.sb1Desc, R.string.sb2Desc, R.string.sb3Desc, R.string.sb4Desc, R.string.sb5Desc, R.string.sb6Desc, R.string.sb7Desc, R.string.sb8Desc};
-        String[] nameList = {"Cariax Gingival", "Cepillo KIN", "KIN Interdentales", "Cera KIN", "Clorhexidina Lacer", "COREGA SUPER", "FLUOR-KIN" , "ODDENT Forte" };
+        int[] imageList = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5, R.drawable.p6, R.drawable.p8, R.drawable.p9};
+        int[] ingredientList = {R.string.p1, R.string.p2, R.string.p3, R.string.p4, R.string.p5, R.string.p6, R.string.p7, R.string.p8};
+        int[] descList = {R.string.p1Desc, R.string.p2Desc, R.string.p3Desc, R.string.p4Desc, R.string.p5Desc, R.string.p6Desc, R.string.p7Desc, R.string.p8Desc};
+        String[] nameList = {"ALCOHOL 70°", "Algodon", "locide Solucion", "BUROSOL", "OXIGEN", "CureBand", "MIGASA" , "NexCare" };
         String[] precioList = {"$ 12", "$ 16", "$ 10.50", "$ 12", "$ 18", "$ 20", "$ 15" , "$ 15"};
         for (int i = 0; i < imageList.length; i++) {
             ListData listData = new ListData(nameList[i], precioList[i], ingredientList[i], descList[i], imageList[i]);
             dataArrayList.add(listData);
         }
 
-        listAdapter = new ListAdapter(SaludBucalActivity.this, dataArrayList);
+        listAdapter = new ListAdapter(PrimerosAuxiliosActivity.this, dataArrayList);
         listView.setAdapter(listAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(SaludBucalActivity.this, DetailedActivity.class);
+                Intent intent = new Intent(PrimerosAuxiliosActivity.this, DetailedActivity.class);
                 intent.putExtra("name", nameList[i]);
                 intent.putExtra("precio", precioList[i]);
                 intent.putExtra("ingredients", getString(ingredientList[i]));
@@ -60,7 +60,7 @@ public class SaludBucalActivity extends AppCompatActivity {
     }
 
     private void navigateToMainActivity() {
-        Intent intent = new Intent(SaludBucalActivity.this, MainActivity2.class);
+        Intent intent = new Intent(PrimerosAuxiliosActivity.this, MainActivity2.class);
         startActivity(intent);
     }
 }

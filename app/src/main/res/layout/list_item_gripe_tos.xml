@@ -19,7 +19,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/listImage"
-            android:src="@drawable/sb1"
+            android:src="@drawable/g1"
             android:scaleType="centerCrop"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
