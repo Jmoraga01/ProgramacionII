@@ -3,6 +3,7 @@ package com.ugb.controlesbasicos;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -23,23 +24,62 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // Referencias a los CardView
+        CardView clothingCard = view.findViewById(R.id.clothingCard);
+        CardView elecCard = view.findViewById(R.id.elecCard);
+        CardView homeCard = view.findViewById(R.id.homeCard);
+        CardView beautyCard = view.findViewById(R.id.beautyCard);
+        CardView pharmCard = view.findViewById(R.id.pharmCard);
+        CardView grocCard = view.findViewById(R.id.grocCard);
 
-        Button verProductosButton = view.findViewById(R.id.button_productos);
-        verProductosButton.setOnClickListener(new View.OnClickListener() {
+        // Configurar los listeners de clic
+        clothingCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navegar a MainActivity2
-                navigateToListView();
+                navigateToActivity(SaludBucalActivity.class);
+            }
+        });
+
+        elecCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToActivity(SaludVisualActivity.class);
+            }
+        });
+
+        homeCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToActivity(VitaminasActivity.class);
+            }
+        });
+
+        beautyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  navigateToActivity(GripeTosActivity.class);
+            }
+        });
+
+        pharmCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToActivity(ProductosActivity.class);
+            }
+        });
+
+        grocCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // navigateToActivity(PrimerosAuxiliosActivity.class);
             }
         });
 
         return view;
     }
 
-    private void navigateToListView() {
-        // Crear un nuevo Intent para iniciar la actividad MainActivity2
-        Intent intent = new Intent(getActivity(), ProductosActivity.class);
-        // Iniciar la actividad MainActivity2
+    private void navigateToActivity(Class<?> activityClass) {
+        Intent intent = new Intent(getActivity(), activityClass);
         startActivity(intent);
     }
 }

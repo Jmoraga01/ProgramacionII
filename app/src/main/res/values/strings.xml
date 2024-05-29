@@ -67,6 +67,65 @@
     <string name="save_friend">Guardar Amigo</string>
     <string name="list_friends_desc">Lista de amigos</string>
 
+    //para la salud bocal
+
+    <string name="g1">18 de enero del 2025
+</string>
+    <string name="g1Desc"> hola si funciona</string>
+
+    <string name="g2">23 de julio del 2027</string>
+    <string name="g2Desc">Tomar una tableta según sea necesario para aliviar la ansiedad. Comenzar con una dosis baja e incrementar según sea necesario, sin exceder la dosis máxima diaria recomendada. Pueden tomarla mayores de 18 años.</string>
+
+    <string name="g3">14 de agosto del 2025</string>
+    <string name="g3Desc"> Tomar una cápsula diariamente con un vaso de agua, preferiblemente despues de comer comida. Pueden tomarla mayores de 17 años.</string>
+
+    <string name="g4">31 de junio de 2026</string>
+    <string name="g4Desc">Tomar una cucharada aproximadamente 15 ml una vez al día. Puede ser tomado solo o mezclado con agua o jugo, preferiblemente con una comida. Pueden tomarla niños y adultos.</string>
+
+    <string name="g5">12 de octubre de 2026</string>
+    <string name="g5Desc">Tomar según la prescripción médica, generalmente 0.25 a 0.5 mg tres veces al día. Solo para adultos. No se recomienda su uso en niños.</string>
+
+    <string name="g6">30 de diciembre del 2024</string>
+    <string name="g6Desc">Tomar una cápsula de 500 mg cada 8 horas, o según lo indicado por el médico. Para niños y adultos. La dosis para niños debe ser indicada por un médico, generalmente basada en el peso corporal.</string>
+
+    <string name="g7">18 de enero del 2027</string>
+    <string name="g7Desc">Tomar una tableta de 10 mg una vez al día. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
+
+    <string name="g8">14 de noviembre del 2024</string>
+    <string name="g8Desc"> Tomar una tableta cada 12 horas. Solo para adultos, salvo indicación contraria de un médico.</string>
+
+    //aqui termina para la salud bocal
+
+    //para la salud visual
+
+    <string name="v1">18 de enero del 2025
+</string>
+    <string name="v1Desc"> hola si funciona salud visual</string>
+
+    <string name="v2">23 de julio del 2027</string>
+    <string name="v2Desc">Tomar una tableta según sea necesario para aliviar la ansiedad. Comenzar con una dosis baja e incrementar según sea necesario, sin exceder la dosis máxima diaria recomendada. Pueden tomarla mayores de 18 años.</string>
+
+    <string name="v3">14 de agosto del 2025</string>
+    <string name="v3Desc"> Tomar una cápsula diariamente con un vaso de agua, preferiblemente despues de comer comida. Pueden tomarla mayores de 17 años.</string>
+
+    <string name="v4">31 de junio de 2026</string>
+    <string name="v4Desc">Tomar una cucharada aproximadamente 15 ml una vez al día. Puede ser tomado solo o mezclado con agua o jugo, preferiblemente con una comida. Pueden tomarla niños y adultos.</string>
+
+    <string name="v5">12 de octubre de 2026</string>
+    <string name="v5Desc">Tomar según la prescripción médica, generalmente 0.25 a 0.5 mg tres veces al día. Solo para adultos. No se recomienda su uso en niños.</string>
+
+    <string name="v6">30 de diciembre del 2024</string>
+    <string name="v6Desc">Tomar una cápsula de 500 mg cada 8 horas, o según lo indicado por el médico. Para niños y adultos. La dosis para niños debe ser indicada por un médico, generalmente basada en el peso corporal.</string>
+
+    <string name="v7">18 de enero del 2027</string>
+    <string name="v7Desc">Tomar una tableta de 10 mg una vez al día. Para niños mayores de 6 años y adultos. La dosis para niños menores de 12 años debe ser indicada por un médico.</string>
+
+    <string name="v8">14 de noviembre del 2024</string>
+    <string name="v8Desc"> Tomar una tableta cada 12 horas. Solo para adultos, salvo indicación contraria de un médico.</string>
+
+    //aqui termina para la salud visual
+
+
     //like
     <string name="like_button">Like Button</string>
 

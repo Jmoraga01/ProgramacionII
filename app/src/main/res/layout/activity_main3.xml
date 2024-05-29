@@ -21,7 +21,8 @@
             android:layout_marginTop="20dp"
             android:text="Farmacia la popular"
             android:textColor="@color/lavender"
-            android:textSize="25sp"
+            android:textSize="30sp"
+
             app:layout_constraintEnd_toStartOf="@+id/amazonImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +67,7 @@
                 android:id="@+id/clothingCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="4dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
@@ -77,9 +78,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/clothingName"
-                        android:text="Salud bucal"
+                        android:text="Clothing"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
+
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/clothingImage"/>
@@ -88,7 +90,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/clothingImage"
-                        android:src="@drawable/img_24"
+                        android:src="@drawable/img_2"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -98,10 +100,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/elecCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="4dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
@@ -112,9 +113,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/elecName"
-                        android:text="Salud visual"
+                        android:text="Electronics"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
+
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/elecImage"/>
@@ -123,7 +125,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/elecImage"
-                        android:src="@drawable/img_25"
+                        android:src="@drawable/img_20"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -146,10 +148,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/homeCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="4dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
@@ -160,9 +161,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/homeName"
-                        android:text="Vitaminas"
+                        android:text="Home"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
+
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/homeImage"/>
@@ -171,7 +173,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/homeImage"
-                        android:src="@drawable/img_26"
+                        android:src="@drawable/img_17"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -181,10 +183,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/beautyCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="4dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
@@ -195,9 +196,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/beautyName"
-                        android:text="Gripe y Tos"
+                        android:text="Beauty"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
+
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/beautyImage"/>
@@ -206,7 +208,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/beautyImage"
-                        android:src="@drawable/img_27"
+                        android:src="@drawable/img_19"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -229,10 +231,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/pharmCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="4dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
@@ -243,9 +244,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/pharmName"
-                        android:text="Medicamentos"
+                        android:text="Pharmacy"
                         android:textSize="20sp"
                         android:textColor="@color/lavender"
+
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/pharmImage"/>
@@ -264,10 +266,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/grocCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="4dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="20dp">
 
                 <RelativeLayout
@@ -278,9 +279,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/grocName"
-                        android:text="Primeros auxilios"
-                        android:textSize="15sp"
+                        android:text="Groceries"
+                        android:textSize="20sp"
                         android:textColor="@color/lavender"
+
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/grocImage"/>
@@ -289,7 +291,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/grocImage"
-                        android:src="@drawable/img_28"
+                        android:src="@drawable/img_1"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
