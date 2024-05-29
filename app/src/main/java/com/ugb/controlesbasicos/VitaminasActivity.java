@@ -24,11 +24,11 @@ public class VitaminasActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listview);
 
-        int[] imageList = {R.drawable.v1, R.drawable.v2, R.drawable.v3, R.drawable.v4, R.drawable.v5, R.drawable.v6, R.drawable.v7, R.drawable.v8};
-        int[] ingredientList = {R.string.g1, R.string.g2, R.string.g3, R.string.g4, R.string.g5, R.string.g6, R.string.g7, R.string.g8};
-        int[] descList = {R.string.v1Desc, R.string.v2Desc, R.string.v3Desc, R.string.v4Desc, R.string.v5Desc, R.string.v6Desc, R.string.v7Desc, R.string.v8Desc};
-        String[] nameList = {"ACULAR LS", "AFLREX", "AGGLAD", "Alin Oftalmico", "Brizolam", "Ciprowell", "CLORA MICOL" , "3-A Ofteno" };
-        String[] precioList = {"$ 12", "$ 16", "$ 10.50", "$ 12", "$ 18", "$ 20", "$ 15" , "$ 15"};
+        int[] imageList = {R.drawable.b1, R.drawable.b2, R.drawable.b3, R.drawable.b4, R.drawable.b5, R.drawable.b6, R.drawable.b7, R.drawable.b8};
+        int[] ingredientList = {R.string.b1, R.string.b2, R.string.b3, R.string.b4, R.string.b5, R.string.b6, R.string.b7, R.string.b8};
+        int[] descList = {R.string.b1Desc, R.string.b2Desc, R.string.b3Desc, R.string.b4Desc, R.string.b5Desc, R.string.b6Desc, R.string.b7Desc, R.string.b8Desc};
+        String[] nameList = {"3-A Ofteno", "acticlep-DB", "arcalion 200", "CEREBROFOS", "ELETIN", "FOSFO B-12", "FOSFO neuromax" , "FOSKROL" };
+        String[] precioList = {"$ 12", "$ 16", "$ 10.50", "$ 12", "$ 18", "$ 20", "$ 15" , "$ 12.50"};
         for (int i = 0; i < imageList.length; i++) {
             ListData listData = new ListData(nameList[i], precioList[i], ingredientList[i], descList[i], imageList[i]);
             dataArrayList.add(listData);
