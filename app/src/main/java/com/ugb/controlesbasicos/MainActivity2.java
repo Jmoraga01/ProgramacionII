@@ -123,7 +123,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
             selectedFragment = new SettingsFragment();
 
         } else if (itemId == R.id.nav_share) {
-            Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+            Intent intent = new Intent(MainActivity2.this, PrimerosAuxiliosActivity.class);
             startActivity(intent);
             return true;
 
