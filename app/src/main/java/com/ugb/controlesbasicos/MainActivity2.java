@@ -118,9 +118,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
             Intent intent = new Intent(MainActivity2.this, UploadActivity.class);
             startActivity(intent);
             return true;
-
-        } else if (itemId == R.id.nav_settings) {
-            selectedFragment = new SettingsFragment();
+            
 
         } else if (itemId == R.id.nav_share) {
             Intent intent = new Intent(MainActivity2.this, PrimerosAuxiliosActivity.class);

@@ -20,10 +20,7 @@
             android:id="@+id/nav_chat"
             android:icon="@drawable/img_10"
             android:title="Chat en vivo"/>
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/nav_settings"
-            android:title="Ajustes"/>
+
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/img_17"
