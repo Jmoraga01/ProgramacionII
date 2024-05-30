@@ -28,7 +28,7 @@ public class PrimerosAuxiliosActivity extends AppCompatActivity {
         int[] ingredientList = {R.string.p1, R.string.p2, R.string.p3, R.string.p4, R.string.p5, R.string.p6, R.string.p7, R.string.p8};
         int[] descList = {R.string.p1Desc, R.string.p2Desc, R.string.p3Desc, R.string.p4Desc, R.string.p5Desc, R.string.p6Desc, R.string.p7Desc, R.string.p8Desc};
         String[] nameList = {"ALCOHOL 70°", "Algodon", "locide Solucion", "BUROSOL", "OXIGEN", "CureBand", "MIGASA" , "NexCare" };
-        String[] precioList = {"$ 12", "$ 16", "$ 10.50", "$ 12", "$ 18", "$ 20", "$ 15" , "$ 15"};
+        String[] precioList = {"$ 3.25", "$ 1.48", "$ 10.50", "$ 0.40", "$ 2.36", "$ 2.18", "$ 3.43" , "$ 5.52"};
         for (int i = 0; i < imageList.length; i++) {
             ListData listData = new ListData(nameList[i], precioList[i], ingredientList[i], descList[i], imageList[i]);
             dataArrayList.add(listData);

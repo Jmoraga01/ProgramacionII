@@ -28,7 +28,7 @@ public class SaludVisualActivity extends AppCompatActivity {
         int[] ingredientList = {R.string.g1, R.string.g2, R.string.g3, R.string.g4, R.string.g5, R.string.g6, R.string.g7, R.string.g8};
         int[] descList = {R.string.v1Desc, R.string.v2Desc, R.string.v3Desc, R.string.v4Desc, R.string.v5Desc, R.string.v6Desc, R.string.v7Desc, R.string.v8Desc};
         String[] nameList = {"ACULAR LS", "AFLREX", "AGGLAD", "Alin Oftalmico", "Brizolam", "Ciprowell", "CLORA MICOL" , "3-A Ofteno" };
-        String[] precioList = {"$ 12", "$ 16", "$ 10.50", "$ 12", "$ 18", "$ 20", "$ 15" , "$ 15"};
+        String[] precioList = {"$ 11.37", "$ 9", "$ 13.26", "$ 7.18", "$ 35.54", "$ 10", "$ 5.90" , "$ 4.85"};
         for (int i = 0; i < imageList.length; i++) {
             ListData listData = new ListData(nameList[i], precioList[i], ingredientList[i], descList[i], imageList[i]);
             dataArrayList.add(listData);

@@ -28,7 +28,7 @@ public class GripeTosActivity extends AppCompatActivity {
         int[] ingredientList = {R.string.g1, R.string.g2, R.string.g3, R.string.g4, R.string.g5, R.string.g6, R.string.g7, R.string.g8};
         int[] descList = {R.string.g1Desc, R.string.g2Desc, R.string.g3Desc, R.string.g4Desc, R.string.g5Desc, R.string.g6Desc, R.string.g7Desc, R.string.g8Desc};
         String[] nameList = {"Antigrip", "Anti.Grip dia", "ABRILLAR EA 575", "ACEITE GOMENOLADO", "alicol D", "Ambroxol MK", "AMBROXOL SUIZOS" , "ANTIFLU-DES" };
-        String[] precioList = {"$ 12", "$ 16", "$ 10.50", "$ 12", "$ 18", "$ 20", "$ 15" , "$ 15"};
+        String[] precioList = {"$ 5.50", "$ 4.80", "$ 8", "$ 12", "$ 7.60", "$ 11.35", "$ 3.69" , "$ 6.99"};
         for (int i = 0; i < imageList.length; i++) {
             ListData listData = new ListData(nameList[i], precioList[i], ingredientList[i], descList[i], imageList[i]);
             dataArrayList.add(listData);

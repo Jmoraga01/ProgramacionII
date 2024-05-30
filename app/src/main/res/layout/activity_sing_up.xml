@@ -80,7 +80,7 @@
             android:layout_marginTop="10dp"
             android:padding="8dp"
             android:text="¿Ya tienes cuenta? Inicia sesion"
-            android:textColor="@color/turquesa"
+            android:textColor="@color/white"
             android:textSize="17sp" />
     </LinearLayout>
     </LinearLayout>

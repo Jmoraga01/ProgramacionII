@@ -28,7 +28,7 @@ public class SaludBucalActivity extends AppCompatActivity {
         int[] ingredientList = {R.string.sb1, R.string.sb2, R.string.sb3, R.string.sb4, R.string.sb5, R.string.sb6, R.string.sb7, R.string.sb8};
         int[] descList = {R.string.sb1Desc, R.string.sb2Desc, R.string.sb3Desc, R.string.sb4Desc, R.string.sb5Desc, R.string.sb6Desc, R.string.sb7Desc, R.string.sb8Desc};
         String[] nameList = {"Cariax Gingival", "Cepillo KIN", "KIN Interdentales", "Cera KIN", "Clorhexidina Lacer", "COREGA SUPER", "FLUOR-KIN" , "ODDENT Forte" };
-        String[] precioList = {"$ 12", "$ 16", "$ 10.50", "$ 12", "$ 18", "$ 20", "$ 15" , "$ 15"};
+        String[] precioList = {"$ 18.27", "$ 3.95", "$ 6.16", "$ 4.89", "$ 8.16", "$ 10.68", "$ 10.42" , "$ 26.88"};
         for (int i = 0; i < imageList.length; i++) {
             ListData listData = new ListData(nameList[i], precioList[i], ingredientList[i], descList[i], imageList[i]);
             dataArrayList.add(listData);

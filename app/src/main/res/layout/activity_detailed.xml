@@ -28,20 +28,20 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_width="328dp"
+            android:layout_height="198dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
 
             <ImageView
                 android:id="@+id/detailImage"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/cuatrol"
-                android:scaleType="centerCrop"/>
+                android:layout_width="314dp"
+                android:layout_height="165dp"
+                android:layout_marginTop="19dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cuatrol" />
 
         </androidx.cardview.widget.CardView>
 
