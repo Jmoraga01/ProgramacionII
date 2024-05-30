@@ -7,11 +7,14 @@
         android:id="@+id/lblmsgi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mensaje de prueba del lado izquierdo"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/izquierda"
-        android:textColor="#FFFFFF"
-        android:layout_margin="10dp"
-        android:padding="10dp"
         android:gravity="left"
-        android:layout_alignParentLeft="true"/>
+        android:padding="10dp"
+        android:text="Mensaje de prueba del lado izquierdo"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>

@@ -69,6 +69,7 @@ public class lista_amigos extends AppCompatActivity {
             }
         });
         //boton flotante para agregar amigos
+        lts = findViewById(R.id.ltsAmigos);
         db = new DB(lista_amigos.this, "", null, 1);
         btn = findViewById(R.id.fabAgregarAmigos);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +89,7 @@ public class lista_amigos extends AppCompatActivity {
         });
         listarDatos();
         buscarAmigos();
+        mostrarChats();
     }
     private void listarDatos(){
         try{
@@ -101,6 +103,25 @@ public class lista_amigos extends AppCompatActivity {
         }catch (Exception e){
             mostrarMsg("Error al cargar lista amigo: "+ e.getMessage());
         }
+    }
+
+    private void mostrarChats(){
+        lts.setOnItemClickListener((parent, view, position, id) -> {
+            try{
+                Bundle bundle = new Bundle();
+                bundle.putString("nombre", datosJSON.getJSONObject(position).getString("nombre") );
+                bundle.putString("to", datosJSON.getJSONObject(position).getString("to") );
+                bundle.putString("from", datosJSON.getJSONObject(position).getString("from") );
+                bundle.putString("urlCompletaFoto", datosJSON.getJSONObject(position).getString("urlCompletaFoto") );
+                bundle.putString("urlCompletaFotoFirestore", datosJSON.getJSONObject(position).getString("urlCompletaFotoFirestore") );
+
+                Intent intent = new Intent(getApplicationContext(), chats.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }catch (Exception ex){
+                mostrarMsg(ex.getMessage());
+            }
+        });
     }
     private void sincronizar(){
         try{
@@ -215,7 +236,7 @@ public class lista_amigos extends AppCompatActivity {
     private void mostrarDatosAmigos(){
         try{
             if( datosJSON.length()>0 ){
-                lts = findViewById(R.id.ltsAmigos);
+
                 alAmigos.clear();
                 alAmigosCopy.clear();
 
