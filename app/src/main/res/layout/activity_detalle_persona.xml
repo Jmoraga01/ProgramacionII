@@ -8,6 +8,7 @@
     <ImageView
         android:id="@+id/imgFoto"
         android:layout_width="150dp"
+        android:layout_marginTop="50dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"/>
@@ -26,10 +27,10 @@
     <!-- Separador -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray"
+        android:layout_height="10dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" /> <!-- Línea horizontal como separador -->
+        android:layout_marginBottom="16dp"
+        android:background="@color/gray" /> <!-- Línea horizontal como separador -->
 
     <!-- Edad -->
     <LinearLayout
@@ -94,6 +95,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Trabajo profesional que ha realizado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trabajo:"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTrabajoProfesional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/turquesa"
+            android:textStyle="italic"
             android:layout_marginStart="8dp" />
     </LinearLayout>
 </LinearLayout>

@@ -52,6 +52,7 @@ public class PersonaAdapter extends RecyclerView.Adapter<PersonaAdapter.PersonaV
             intent.putExtra("edad", persona.getEdad());
             intent.putExtra("correo", persona.getCorreo());
             intent.putExtra("profesion", persona.getProfesion());
+            intent.putExtra("trabajoProfesional", persona.getTrabajoProfesional());
             intent.putExtra("foto", persona.getFoto());
             context.startActivity(intent);
         });
@@ -69,6 +70,7 @@ public class PersonaAdapter extends RecyclerView.Adapter<PersonaAdapter.PersonaV
         public PersonaViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNombre = itemView.findViewById(R.id.txtNombre);
+            txtProfesion = itemView.findViewById(R.id.txtProfesion);
             txtProfesion = itemView.findViewById(R.id.txtProfesion);
             imgPersona = itemView.findViewById(R.id.imgPersona);
         }

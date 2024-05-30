@@ -35,15 +35,17 @@ public class DetallePersonaActivity extends AppCompatActivity {
         TextView txtEdad = findViewById(R.id.txtEdad);   // Verificar que ID coincide con XML
         TextView txtCorreo = findViewById(R.id.txtCorreo); // Verificar que ID coincide con XML
         TextView txtProfesion = findViewById(R.id.txtProfesion);
+        TextView txtTrabajoProfesional = findViewById(R.id.txtTrabajoProfesional);
 
         // Obtener los datos del intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             imgFoto.setImageResource(extras.getInt("foto"));
             txtNombre.setText(extras.getString("nombre"));
-            txtEdad.setText(String.valueOf(extras.getInt("edad")));
+            txtEdad.setText(extras.getString("edad"));
             txtCorreo.setText(extras.getString("correo"));
             txtProfesion.setText(extras.getString("profesion"));
+            txtTrabajoProfesional.setText(extras.getString("trabajoProfesional"));
         }
     }
 }
