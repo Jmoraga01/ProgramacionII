@@ -34,6 +34,12 @@
         android:theme="@style/Theme.ControlesBasicos"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false" />
+        <activity
             android:name=".PrimerosAuxiliosActivity"
             android:exported="false" />
         <activity
@@ -47,9 +53,6 @@
             android:exported="false" />
         <activity
             android:name=".SaludBucalActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity3"
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
@@ -175,6 +178,9 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyBqh-zLGRsEGlaBl5qvZfWMU7VqV9ZA3BQ" />
         </provider>
     </application>
 

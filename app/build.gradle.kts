@@ -59,4 +59,8 @@ dependencies {
 
     //para generar el pdf
     implementation("com.itextpdf:itext7-core:7.1.15")
+
+    //mapa gps
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:17.0.0")
 }
