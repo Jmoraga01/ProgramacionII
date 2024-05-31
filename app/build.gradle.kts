@@ -62,5 +62,7 @@ dependencies {
 
     //mapa gps
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation("com.android.volley:volley:1.2.1")
 
 }
