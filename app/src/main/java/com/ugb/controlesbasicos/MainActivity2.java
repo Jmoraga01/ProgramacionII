@@ -121,7 +121,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
             
 
         } else if (itemId == R.id.nav_share) {
-            Intent intent = new Intent(MainActivity2.this, PrimerosAuxiliosActivity.class);
+            Intent intent = new Intent(MainActivity2.this, MapaInicio.class);
             startActivity(intent);
             return true;
 
