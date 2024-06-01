@@ -255,7 +255,15 @@
             app:layout_constraintStart_toEndOf="@+id/menosButton"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-
+        <ImageButton
+            android:id="@+id/regresarbtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_regresar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

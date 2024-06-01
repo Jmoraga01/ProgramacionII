@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 // DetallePersonaActivity.java
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -47,5 +49,14 @@ public class DetallePersonaActivity extends AppCompatActivity {
             txtProfesion.setText(extras.getString("profesion"));
             txtTrabajoProfesional.setText(extras.getString("trabajoProfesional"));
         }
+
+        // ESTE ES EL BOTON QUE HICE PARA RETROCEDER
+        ImageButton regresarButton = findViewById(R.id.regresarbtnpersona);
+        regresarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Esto lo hice para que me cierre la actividad actual y volverá al activity anterior
+            }
+        });
     }
 }

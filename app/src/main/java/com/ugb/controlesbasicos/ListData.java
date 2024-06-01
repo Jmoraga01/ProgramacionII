@@ -13,4 +13,7 @@ public class ListData {
         this.desc = desc;
         this.image = image;
     }
+    public String getName() {
+        return name;
+    }
 }

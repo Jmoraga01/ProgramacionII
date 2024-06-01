@@ -109,7 +109,7 @@ public class AgregarAlCarrito extends AppCompatActivity {
         String precioProductoStr = intent.getStringExtra("precio");
 
         // Verificamos si el precio contiene el símbolo "$"
-        if (precioProductoStr!= null && precioProductoStr.startsWith("$")) {
+        if (precioProductoStr != null && precioProductoStr.startsWith("$")) {
             // Eliminamos el símbolo "$" antes de convertir a double
             precioProductoStr = precioProductoStr.substring(1);
         }
@@ -152,7 +152,7 @@ public class AgregarAlCarrito extends AppCompatActivity {
                     subMetodoPagoSpinner.setVisibility(View.GONE);
                 }
 
-                if (subMetodoPagoAdapter!= null) {
+                if (subMetodoPagoAdapter != null) {
                     subMetodoPagoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     subMetodoPagoSpinner.setAdapter(subMetodoPagoAdapter);
                     subMetodoPagoSpinner.setVisibility(View.VISIBLE);
@@ -209,15 +209,24 @@ public class AgregarAlCarrito extends AppCompatActivity {
                 return;
             }
 
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
             } else {
                 generarPDF(nombreCliente, correoCliente, telefonoCliente, nombreProducto, precioProducto, cantidad, total, metodoPago, subMetodoPago, numeroTarjeta);
             }
         });
+
+        // ESTE ES EL BOTON QUE HICE PARA RETROCEDER
+        ImageButton regresarButton = findViewById(R.id.regresarbtn);
+        regresarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Esto lo hice para que me cierre la actividad actual y volverá al activity anterior
+            }
+        });
     }
 
-    @Override
+        @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_WRITE_PERMISSION && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

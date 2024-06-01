@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -16,11 +19,13 @@ public class GripeTosActivity extends AppCompatActivity {
     private ListView listView;
     private ListAdapter listAdapter;
     private ArrayList<ListData> dataArrayList = new ArrayList<>();
+    private EditText editTextSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gripe_tos);
+        editTextSearch = findViewById(R.id.editTextSearch);
 
         listView = findViewById(R.id.listview);
 
@@ -57,6 +62,33 @@ public class GripeTosActivity extends AppCompatActivity {
                 navigateToMainActivity();
             }
         });
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+    private void filter(String text) {
+        ArrayList<ListData> filteredList = new ArrayList<>();
+
+        for (ListData item : dataArrayList) {
+            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        listAdapter = new ListAdapter(GripeTosActivity.this, filteredList);
+        listView.setAdapter(listAdapter);
     }
 
     private void navigateToMainActivity() {

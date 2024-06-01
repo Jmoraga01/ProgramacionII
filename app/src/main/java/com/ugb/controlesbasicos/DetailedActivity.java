@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.ugb.controlesbasicos.databinding.ActivityDetailedBinding;
@@ -40,14 +41,17 @@ public class DetailedActivity extends AppCompatActivity {
             binding.detailDesc.setText(desc);
             binding.detailIngredients.setText(ingredients);
             binding.detailImage.setImageResource(image);
+        }
 
-            // Lógica para regresar a MainActivity2
-            binding.regresar2.setOnClickListener(new View.OnClickListener() {
+             // ESTE ES EL BOTON QUE HICE PARA RETROCEDER
+            ImageButton regresarButton = findViewById(R.id.regresar2);
+            regresarButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    navigateToMainActivity();
+                    finish(); // Esto cerrará la actividad actual y volverá al activity anterior
                 }
             });
+
 
             // Lógica para agregar al carrito (sin cantidad)
             binding.addToCartButton.setOnClickListener(new View.OnClickListener() {
@@ -57,12 +61,6 @@ public class DetailedActivity extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    private void navigateToMainActivity() {
-        Intent intent = new Intent(DetailedActivity.this, MainActivity2.class);
-        startActivity(intent);
-    }
 
     public void onAddToCartClicked(View view) {
         // Obtener los datos necesarios para enviar a AgregarAlCarro
