@@ -145,7 +145,7 @@
         android:background="@android:color/transparent"
         android:contentDescription="Regresar"
         android:scaleType="centerInside"
-        android:src="@drawable/img_31"
+        android:src="@drawable/img_34"
         android:layout_gravity="start|top" />
 
 </FrameLayout>
