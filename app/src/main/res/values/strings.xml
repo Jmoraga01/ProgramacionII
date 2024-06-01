@@ -5,6 +5,27 @@
     <string name="nav_close">Close Navigation Drawer</string>
 
 
+    <!-- Otros recursos -->
+
+    <string-array name="metodos_pago">
+        <item>Efectivo</item>
+        <item>Tarjeta de Crédito</item>
+        <item>Monedero Digital</item>
+    </string-array>
+
+    <string-array name="tarjetas_credito">
+        <item>MasterCard</item>
+        <item>Visa</item>
+        <item>American Express</item>
+        <item>Davivienda</item>
+    </string-array>
+
+    <string-array name="monedero_digital">
+        <item>Paypal</item>
+        <item>Google Wallet</item>
+        <item>Apple Pay</item>
+    </string-array>
+
     <string name="vitamia1">18 de enero del 2025
 </string>
     <string name="vitamina1Desc"> Tomar una tableta de 10mg una vez al día, preferiblemente despues de que haya comido alimentos. Solo pueden tomarla mayores de 18 años.</string>

@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +29,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,6 +72,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,6 +95,10 @@ public class AgregarAlCarrito extends AppCompatActivity {
     private int cantidad = 1; // Cantidad inicial
     private static final int REQUEST_WRITE_PERMISSION = 786;
 
+    private EditText numeroTarjetaEditText;
+    private Spinner metodoPagoSpinner, subMetodoPagoSpinner;
+    private String metodoPago, subMetodoPago;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +109,7 @@ public class AgregarAlCarrito extends AppCompatActivity {
         String precioProductoStr = intent.getStringExtra("precio");
 
         // Verificamos si el precio contiene el símbolo "$"
-        if (precioProductoStr != null && precioProductoStr.startsWith("$")) {
+        if (precioProductoStr!= null && precioProductoStr.startsWith("$")) {
             // Eliminamos el símbolo "$" antes de convertir a double
             precioProductoStr = precioProductoStr.substring(1);
         }
@@ -114,6 +123,59 @@ public class AgregarAlCarrito extends AppCompatActivity {
         Button generarPDFButton = findViewById(R.id.generarPDFButton);
         ImageButton masButton = findViewById(R.id.masButton);
         ImageButton menosButton = findViewById(R.id.menosButton);
+        numeroTarjetaEditText = findViewById(R.id.numeroTarjetaEditText);
+        metodoPagoSpinner = findViewById(R.id.metodoPagoSpinner);
+        subMetodoPagoSpinner = findViewById(R.id.subMetodoPagoSpinner);
+
+        // Configuramos el Spinner de Métodos de Pago
+        ArrayAdapter<CharSequence> metodoPagoAdapter = ArrayAdapter.createFromResource(this,
+                R.array.metodos_pago, android.R.layout.simple_spinner_item);
+        metodoPagoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        metodoPagoSpinner.setAdapter(metodoPagoAdapter);
+
+        metodoPagoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                metodoPago = parent.getItemAtPosition(position).toString();
+                ArrayAdapter<CharSequence> subMetodoPagoAdapter = null;
+
+                if (metodoPago.equals("Tarjeta de Crédito")) {
+                    numeroTarjetaEditText.setVisibility(View.VISIBLE);
+                    subMetodoPagoAdapter = ArrayAdapter.createFromResource(parent.getContext(),
+                            R.array.tarjetas_credito, android.R.layout.simple_spinner_item);
+                } else if (metodoPago.equals("Monedero Digital")) {
+                    numeroTarjetaEditText.setVisibility(View.GONE);
+                    subMetodoPagoAdapter = ArrayAdapter.createFromResource(parent.getContext(),
+                            R.array.monedero_digital, android.R.layout.simple_spinner_item);
+                } else {
+                    numeroTarjetaEditText.setVisibility(View.GONE);
+                    subMetodoPagoSpinner.setVisibility(View.GONE);
+                }
+
+                if (subMetodoPagoAdapter!= null) {
+                    subMetodoPagoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    subMetodoPagoSpinner.setAdapter(subMetodoPagoAdapter);
+                    subMetodoPagoSpinner.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No hacer nada
+            }
+        });
+
+        subMetodoPagoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                subMetodoPago = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No hacer nada
+            }
+        });
 
         nombreProductoTextView.setText(nombreProducto);
         precioProductoTextView.setText("$" + precioProductoStr);
@@ -138,12 +200,19 @@ public class AgregarAlCarrito extends AppCompatActivity {
             String nombreCliente = ((EditText) findViewById(R.id.nombreClienteEditText)).getText().toString();
             String correoCliente = ((EditText) findViewById(R.id.correoClienteEditText)).getText().toString();
             String telefonoCliente = ((EditText) findViewById(R.id.telefonoClienteEditText)).getText().toString();
+            String numeroTarjeta = numeroTarjetaEditText.getText().toString();
             double total = cantidad * precioProducto;
 
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            // Verificamos si todos los campos están llenos
+            if (nombreCliente.isEmpty() || correoCliente.isEmpty() || telefonoCliente.isEmpty()) {
+                Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
             } else {
-                generarPDF(nombreCliente, correoCliente, telefonoCliente, nombreProducto, precioProducto, cantidad, total);
+                generarPDF(nombreCliente, correoCliente, telefonoCliente, nombreProducto, precioProducto, cantidad, total, metodoPago, subMetodoPago, numeroTarjeta);
             }
         });
     }
@@ -155,8 +224,9 @@ public class AgregarAlCarrito extends AppCompatActivity {
             String nombreCliente = ((EditText) findViewById(R.id.nombreClienteEditText)).getText().toString();
             String correoCliente = ((EditText) findViewById(R.id.correoClienteEditText)).getText().toString();
             String telefonoCliente = ((EditText) findViewById(R.id.telefonoClienteEditText)).getText().toString();
+            String numeroTarjeta = numeroTarjetaEditText.getText().toString();
             double total = cantidad * precioProducto;
-            generarPDF(nombreCliente, correoCliente, telefonoCliente, nombreProducto, precioProducto, cantidad, total);
+            generarPDF(nombreCliente, correoCliente, telefonoCliente, nombreProducto, precioProducto, cantidad, total, metodoPago, subMetodoPago, numeroTarjeta);
         }
     }
 
@@ -165,7 +235,7 @@ public class AgregarAlCarrito extends AppCompatActivity {
         totalTextView.setText("Total: $" + String.format("%.2f", total));
     }
 
-    private void generarPDF(String nombreCliente, String correoCliente, String telefonoCliente, String nombreProducto, double precioProducto, int cantidad, double total) {
+    private void generarPDF(String nombreCliente, String correoCliente, String telefonoCliente, String nombreProducto, double precioProducto, int cantidad, double total, String metodoPago, String subMetodoPago, String numeroTarjeta) {
         try {
             String filePath = getExternalFilesDir(null) + "/Factura.pdf";
             Log.d("AgregarAlCarrito", "Ruta del archivo PDF: " + filePath);
@@ -174,17 +244,28 @@ public class AgregarAlCarrito extends AppCompatActivity {
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
 
-            document.add(new Paragraph("Información del Cliente:"));
-            document.add(new Paragraph("Nombre: " + nombreCliente));
+            document.add(new Paragraph("\nINFORMACION DEL CLIENTE:"));
+            document.add(new Paragraph("\nNombre: " + nombreCliente));
             document.add(new Paragraph("Correo Electrónico: " + correoCliente));
             document.add(new Paragraph("Teléfono: " + telefonoCliente));
-            document.add(new Paragraph("\nInformación del Producto:"));
-            document.add(new Paragraph("Nombre del Producto: " + nombreProducto));
+            document.add(new Paragraph("\nINFORMACION DEL PRODUCTO:"));
+            document.add(new Paragraph("\nNombre del Producto: " + nombreProducto));
             document.add(new Paragraph("Precio del Producto: $" + precioProducto));
             document.add(new Paragraph("Cantidad: " + cantidad));
             document.add(new Paragraph("Total: $" + String.format("%.2f", total)));
+            document.add(new Paragraph("\nMETODO DE PAGO:"));
+            document.add(new Paragraph("\nTipo de pago: " + metodoPago));
+            document.add(new Paragraph("Targeta de: " + subMetodoPago));
+
+            if (metodoPago.equals("Tarjeta de Crédito")) {
+                document.add(new Paragraph("Número de Tarjeta: " + numeroTarjeta));
+            }
+
+            Toast.makeText(this, "El PDF esta siendo listo para enviar", Toast.LENGTH_SHORT).show();
 
             document.close();
+
+
 
             Log.d("AgregarAlCarrito", "PDF generado correctamente");
             enviarPDFPorCorreo(correoCliente, filePath);
