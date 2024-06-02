@@ -264,13 +264,13 @@ public class AgregarAlCarrito extends AppCompatActivity {
             document.add(new Paragraph("Total: $" + String.format("%.2f", total)));
             document.add(new Paragraph("\nMETODO DE PAGO:"));
             document.add(new Paragraph("\nTipo de pago: " + metodoPago));
-            document.add(new Paragraph("Targeta de: " + subMetodoPago));
+            document.add(new Paragraph("Tipo de targeta: " + subMetodoPago));
 
             if (metodoPago.equals("Tarjeta de Crédito")) {
                 document.add(new Paragraph("Número de Tarjeta: " + numeroTarjeta));
             }
 
-            Toast.makeText(this, "El PDF esta siendo listo para enviar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "La factura esta siendo lista para enviar...", Toast.LENGTH_SHORT).show();
 
             document.close();
 

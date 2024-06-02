@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/login"
+    android:background="@drawable/background_gradient"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -16,41 +16,33 @@
         android:orientation="vertical"
         android:layout_margin="30dp"
         android:padding="24dp"
-        android:background="@drawable/rounded_edittext_background">
-
-
-
-        <TextView
-            android:id="@+id/loginText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Iniciar sesión"
-            android:textAlignment="center"
-            android:textColor="@color/turquesa"
-            android:textSize="35sp"
-            android:textStyle="bold" />
+        android:background="@drawable/rounded_corner_background"
+        android:elevation="10dp"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/logo_image"
-            android:layout_width="104dp"
-            android:layout_height="78dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_person_24"
             android:contentDescription="Logo"
-            android:src="@drawable/img_13" />
+            android:layout_marginBottom="-10dp"
+            android:tint="@color/white" />
 
         <EditText
             android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/edittext_background"
             android:inputType="textEmailAddress"
-            android:padding="8dp"
-            android:hint="Correo"
+            android:hint="Correo Electronico"
             android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/black"
-            android:drawablePadding="8dp"/>
+            android:textColorHint="@color/light_gray" />
 
         <EditText
             android:id="@+id/login_password"
@@ -59,33 +51,49 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_background"
             android:inputType="textPassword"
-            android:padding="8dp"
             android:hint="Contraseña"
             android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/black"
-            android:drawablePadding="8dp"/>
+            android:textColorHint="@color/light_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/remember_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recordarme"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:text="¿Olvidaste tu contraseña?"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Iniciar"
+            android:layout_height="50dp"
+            android:text="Iniciar Sesion"
             android:textSize="18sp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/purple"
-            app:cornerRadius = "20dp"/>
-
-        <TextView
-            android:id="@+id/forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:padding="8dp"
-            android:text="¿Has olvidado tu contraseña?"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/blue"
             android:textColor="@color/white"
-            android:textSize="16sp" />
-
+            android:background="@drawable/button_background" />
 
         <TextView
             android:id="@+id/signUpRedirectText"
@@ -97,10 +105,7 @@
             android:text="¿Aún no tienes cuenta? Crear Cuenta"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="17sp" />
-
-
+            android:textSize="16sp" />
 
     </LinearLayout>
-
 </LinearLayout>

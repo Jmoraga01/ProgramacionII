@@ -9,11 +9,11 @@
     <!-- Imagen de perfil -->
     <ImageButton
         android:id="@+id/regresarbtnpersona"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/img_34"
+        android:src="@drawable/img_35"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"

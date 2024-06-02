@@ -7,47 +7,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/login"
+    android:background="@drawable/background_gradient"
     tools:context=".SingUpActivity">
 
     <LinearLayout
-        android:layout_width="392dp"
-        android:layout_height="545dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/rounded_edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_margin="30dp"
+        android:padding="24dp"
+        android:background="@drawable/rounded_corner_background"
+        android:elevation="10dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/img_14"
+            android:contentDescription="Logo"
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Crear Cuenta"
             android:textAlignment="center"
-            android:textColor="@color/turquesa"
+            android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/logo_image"
-            android:layout_width="123dp"
-            android:layout_height="91dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="Logo"
-            android:src="@drawable/img_14" />
 
         <EditText
             android:id="@+id/signup_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/edittext_background"
             android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:drawablePadding="8dp"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
             android:hint="Correo"
             android:inputType="textEmailAddress"
-            android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/light_gray" />
 
         <EditText
             android:id="@+id/signup_password"
@@ -56,31 +59,34 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_background"
             android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:drawablePadding="8dp"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
             android:hint="Contraseña"
             android:inputType="textPassword"
-            android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/light_gray" />
 
         <Button
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/purple"
-            android:text="Crear"
+            android:layout_height="50dp"
+            android:text="Crear Cuenta"
             android:textSize="18sp"
-            app:cornerRadius="20dp" />
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
+            android:background="@drawable/button_background" />
 
         <TextView
             android:id="@+id/loginRedirectText"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:padding="8dp"
+            android:layout_gravity="center"
             android:text="¿Ya tienes cuenta? Inicia sesion"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
     </LinearLayout>
-    </LinearLayout>
+</LinearLayout>

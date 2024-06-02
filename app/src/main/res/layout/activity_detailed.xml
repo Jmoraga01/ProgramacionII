@@ -138,14 +138,14 @@
 
     <ImageButton
         android:id="@+id/regresar2"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="start|top"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:contentDescription="Regresar"
         android:scaleType="centerInside"
-        android:src="@drawable/img_34"
-        android:layout_gravity="start|top" />
+        android:src="@drawable/img_36" />
 
 </FrameLayout>

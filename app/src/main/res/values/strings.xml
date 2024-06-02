@@ -231,10 +231,8 @@
     //aqui termina para primeros auxilios
 
 
-    //like
-    <string name="like_button">Like Button</string>
+    <string name="back_desc">Go back</string>
 
-    <color name="gray">#808080</color>
 
 
 </resources>

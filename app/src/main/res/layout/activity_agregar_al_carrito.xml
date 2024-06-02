@@ -257,13 +257,13 @@
 
         <ImageButton
             android:id="@+id/regresarbtn"
-            android:layout_width="51dp"
-            android:layout_height="48dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerInside"
-            android:src="@drawable/img_34"
+            android:src="@drawable/img_36"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
