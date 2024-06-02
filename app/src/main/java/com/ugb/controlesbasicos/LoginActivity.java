@@ -18,6 +18,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -153,6 +154,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 dialog.show();
+            }
+        });
+        // ESTE ES EL BOTON QUE HICE PARA RETROCEDER
+        ImageButton regresarButton = findViewById(R.id.loginregresarbtn);
+        regresarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Esto lo hice para que me cierre la actividad actual y volverá al activity anterior
             }
         });
     }

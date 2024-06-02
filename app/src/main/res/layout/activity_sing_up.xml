@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,6 +9,18 @@
     android:gravity="center"
     android:background="@drawable/background_gradient"
     tools:context=".SingUpActivity">
+
+    <ImageButton
+        android:id="@+id/loginregresarbtn"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-90dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="centerInside"
+        android:src="@drawable/regresar2" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,12 +34,12 @@
 
         <ImageView
             android:id="@+id/logo_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="102dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
-            android:src="@drawable/img_14"
+            android:layout_marginBottom="20dp"
             android:contentDescription="Logo"
-            android:layout_marginBottom="20dp" />
+            android:src="@drawable/img_39" />
 
         <TextView
             android:layout_width="match_parent"
@@ -35,7 +47,7 @@
             android:text="Crear Cuenta"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="35sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
         <EditText
@@ -75,7 +87,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/blue"
             android:textColor="@color/white"
-            android:background="@drawable/button_background" />
+            android:background="@drawable/custom_edittext" />
 
         <TextView
             android:id="@+id/loginRedirectText"
@@ -89,4 +101,4 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

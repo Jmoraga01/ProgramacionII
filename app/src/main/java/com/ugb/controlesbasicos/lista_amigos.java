@@ -276,11 +276,12 @@ public class lista_amigos extends AppCompatActivity {
         try {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
             posicion = info.position;
-            menu.setHeaderTitle(datosJSON.getJSONObject(posicion).getJSONObject("value").getString("nombre"));
-        }catch (Exception e){
-            mostrarMsg("Error al mostrar el menu: "+ e.getMessage());
+            menu.setHeaderTitle(datosJSON.getJSONObject(posicion).getString("nombre"));
+        } catch (Exception e) {
+            mostrarMsg("Error al mostrar el menu: " + e.getMessage());
         }
     }
+
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         try {
@@ -305,21 +306,21 @@ public class lista_amigos extends AppCompatActivity {
         try{
             AlertDialog.Builder confirmar = new AlertDialog.Builder(lista_amigos.this);
             confirmar.setTitle("Estas seguro de eliminar a: ");
-            confirmar.setMessage(datosJSON.getJSONObject(posicion).getJSONObject("value").getString("nombre")); //1 es el nombre
+            confirmar.setMessage(datosJSON.getJSONObject(posicion).getString("nombre")); //1 es el nombre
             confirmar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     try {
                         String respuesta = db.administrar_amigos("eliminar",
-                                new String[]{"", "", datosJSON.getJSONObject(posicion).getJSONObject("value").getString("idAmigo")});
+                                new String[]{"", "", datosJSON.getJSONObject(posicion).getString("idAmigo")});
                         if (respuesta.equals("ok")) {
                             mostrarMsg("Amigo eliminado con exito");
                             obtenerDatosAmigos();
                         } else {
                             mostrarMsg("Error al eliminar el amigo: " + respuesta);
                         }
-                    }catch (Exception e){
-                        mostrarMsg("Error al intentar elimianr: "+ e.getMessage());
+                    } catch (Exception e) {
+                        mostrarMsg("Error al intentar eliminar: " + e.getMessage());
                     }
                 }
             });
@@ -330,10 +331,11 @@ public class lista_amigos extends AppCompatActivity {
                 }
             });
             confirmar.create().show();
-        }catch (Exception e){
-            mostrarMsg("Error al eliminar amigo: "+ e.getMessage());
+        } catch (Exception e) {
+            mostrarMsg("Error al eliminar amigo: " + e.getMessage());
         }
     }
+
     private void abrirActividad(Bundle parametros){
         Intent abrirActividad = new Intent(getApplicationContext(), MainActivity.class);
         abrirActividad.putExtras(parametros);
@@ -346,8 +348,7 @@ public class lista_amigos extends AppCompatActivity {
             if( cAmigos.moveToFirst() ){
                 datosJSON = new JSONArray();
                 do{
-                    jsonObject =new JSONObject();
-                    JSONObject jsonObjectValue = new JSONObject();
+                    jsonObject = new JSONObject();
                     jsonObject.put("_id", cAmigos.getString(0));
                     jsonObject.put("_rev", cAmigos.getString(1));
                     jsonObject.put("idAmigo", cAmigos.getString(2));
@@ -358,18 +359,18 @@ public class lista_amigos extends AppCompatActivity {
                     jsonObject.put("dui", cAmigos.getString(7));
                     jsonObject.put("urlCompletaFoto", cAmigos.getString(8));
 
-                    jsonObjectValue.put("value", jsonObject);
-                    datosJSON.put(jsonObjectValue);
+                    datosJSON.put(jsonObject);
 
-                }while(cAmigos.moveToNext());
+                } while (cAmigos.moveToNext());
                 mostrarDatosAmigos();
-            }else{
+            } else {
                 mostrarMsg("No hay Datos de amigos que mostrar.");
             }
-        }catch (Exception e){
-            mostrarMsg("Error al mostrar datos: "+ e.getMessage());
+        } catch (Exception e) {
+            mostrarMsg("Error al mostrar datos: " + e.getMessage());
         }
     }
+
     private void buscarAmigos(){
         TextView tempVal;
         tempVal = findViewById(R.id.txtBuscarAmigos);
