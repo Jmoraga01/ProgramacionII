@@ -39,14 +39,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/sensor_text"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:text="Sensor de Farmacia La Popular"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:text="Seson de Farmacia La Popular"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:textColor="#000"/>
 
     </LinearLayout>
 
