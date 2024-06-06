@@ -60,15 +60,15 @@ public class MainActivity3 extends AppCompatActivity implements SensorEventListe
             lightProgress.setProgress((int) lightValue);
             lightInfo.setText("Iluminancia: " + lightValue + " lx");
 
-            if (lightValue < 1000) {
+            if (lightValue < 100) {
                 lightBulb.setColorFilter(Color.GRAY);
                 lightBulb.setImageResource(R.drawable.img_40);
 
-            } else if (lightValue < 3000) {
+            } else if (lightValue < 900) {
                 lightBulb.setColorFilter(Color.YELLOW);
                 lightBulb.setImageResource(R.drawable.img_40);
 
-            } else if (lightValue < 6000) {
+            } else if (lightValue < 1000) {
                 lightBulb.setColorFilter(Color.GREEN);
                 lightBulb.setImageResource(R.drawable.img_40);
             } else {

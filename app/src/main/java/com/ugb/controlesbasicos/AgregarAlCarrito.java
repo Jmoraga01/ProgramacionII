@@ -143,10 +143,7 @@ public class AgregarAlCarrito extends AppCompatActivity {
                     numeroTarjetaEditText.setVisibility(View.VISIBLE);
                     subMetodoPagoAdapter = ArrayAdapter.createFromResource(parent.getContext(),
                             R.array.tarjetas_credito, android.R.layout.simple_spinner_item);
-                } else if (metodoPago.equals("Monedero Digital")) {
-                    numeroTarjetaEditText.setVisibility(View.GONE);
-                    subMetodoPagoAdapter = ArrayAdapter.createFromResource(parent.getContext(),
-                            R.array.monedero_digital, android.R.layout.simple_spinner_item);
+
                 } else {
                     numeroTarjetaEditText.setVisibility(View.GONE);
                     subMetodoPagoSpinner.setVisibility(View.GONE);
