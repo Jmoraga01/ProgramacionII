@@ -23,6 +23,14 @@
         <item>Fedecrédito</item>
     </string-array>
 
+    <string-array name="efectivo">
+        <item>20 dolares</item>
+        <item>100 dolares</item>
+        <item>50 dolares</item>
+        <item>5 dolares</item>
+        <item>10 dolares</item>
+    </string-array>
+
 
     <string name="vitamia1">18 de enero del 2025
 </string>
