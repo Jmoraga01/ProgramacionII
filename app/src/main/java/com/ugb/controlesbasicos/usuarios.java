@@ -25,6 +25,7 @@ public class usuarios extends AppCompatActivity {
         setContentView(R.layout.activity_usuarios);
 
         obtenerToken();
+
     }
     private void obtenerToken(){
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
